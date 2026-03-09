@@ -37,8 +37,8 @@
             padding: 30px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); cursor: pointer; height: 100%;
         }
         .product-card:hover { transform: scale(1.05); border-color: var(--main); box-shadow: 0 20px 40px rgba(0, 113, 227, 0.2); }
-        .img-box { height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .img-box img { max-height: 100%; transition: 0.5s; }
+        .img-box { height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; overflow: hidden; border-radius: 15px; }
+        .img-box img { max-height: 100%; width: 100%; object-fit: cover; transition: 0.5s; }
 
         /* BUSCADOR */
         .search-container { max-width: 500px; margin: 0 auto 40px; }
@@ -169,9 +169,9 @@
 
         const prods = [
             { id: 1, name: "SteelSeries Apex 7 TKL", price: 79, img: "teclado con ia 2.jpg" },
-            { id: 2, name: "NVIDIA RTX 4090", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
-            { id: 3, name: "Mouse Gaming Pro", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
-            { id: 4, name: "Monitor 240Hz OLED", price: 3100, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
+            { id: 2, name: "Pad Gamer Pro XL", price: 23.9, img: "http://googleusercontent.com/image_collection/image_retrieval/16549587476526932831_0" },
+            { id: 3, name: "Mouse Gaming Pro", price: 69.9, img: "http://googleusercontent.com/image_collection/image_retrieval/4231298142574822197_0" },
+            { id: 4, name: "Monitor 240Hz OLED", price: 459.9, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
         ];
 
         let myCart = [];
@@ -180,7 +180,7 @@
             document.getElementById('pGrid').innerHTML = items.map(p => `
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card text-center" onclick="add(${p.id})">
-                        <div class="img-box"><img src="${p.img}" class="img-fluid"></div>
+                        <div class="img-box"><img src="${p.img}" class="img-fluid" alt="${p.name}"></div>
                         <h4 class="fw-bold mb-1">${p.name}</h4>
                         <p class="accent-color fs-4 fw-bold">S/ ${p.price}</p>
                         <button class="btn btn-outline-light w-100 rounded-pill">Añadir</button>
@@ -211,7 +211,7 @@
                     </div>
                 </div>
             `).join('');
-            document.getElementById('cTotal').innerText = `S/ ${myCart.reduce((s, p) => s + p.price, 0)}`;
+            document.getElementById('cTotal').innerText = `S/ ${myCart.reduce((s, p) => s + p.price, 0).toFixed(2)}`;
         }
 
         function sendWsp() {
