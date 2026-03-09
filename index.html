@@ -7,13 +7,11 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root { --main: #0071e3; --dark: #000; --card: #161617; }
         body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HERO */
         .hero { 
             position: relative; height: 100vh; width: 100%; display: flex; 
             align-items: center; justify-content: center; overflow: hidden; background-color: #000;
@@ -26,31 +24,26 @@
         .hero-content { position: relative; z-index: 3; text-align: center; }
         .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
 
-        /* PRODUCTOS */
         .section-padding { padding: 80px 0; }
         .product-card {
             background: var(--card); border: 1px solid #333; border-radius: 30px;
-            padding: 25px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); cursor: pointer; height: 100%;
+            padding: 25px; transition: 0.5s; cursor: pointer; height: 100%;
         }
         .product-card:hover { transform: scale(1.05); border-color: var(--main); box-shadow: 0 20px 40px rgba(0, 113, 227, 0.2); }
-        .img-box { height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; overflow: hidden; border-radius: 15px; background: #222; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .img-box { height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; overflow: hidden; border-radius: 15px; background: #111; }
+        .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        /* MODAL DETALLES */
         .modal-content { background: #1c1c1e; border-radius: 30px; border: 1px solid #333; color: white; padding: 20px; }
-        .modal-header { border: none; }
-        .modal-body img { border-radius: 20px; width: 100%; height: 350px; object-fit: cover; }
+        .modal-body img { border-radius: 20px; width: 100%; height: 350px; object-fit: contain; background: #111; padding: 10px; }
         .spec-label { color: var(--main); font-weight: bold; text-transform: uppercase; font-size: 0.75rem; display: block; margin-top: 10px; }
         .spec-value { font-size: 1rem; color: #ccc; display: block; margin-bottom: 5px; }
 
-        /* FOOTER */
-        footer { background: #080808; padding: 40px 0; border-top: 1px solid #222; margin-top: 50px; }
+        footer { background: #080808; padding: 40px 0; border-top: 1px solid #222; }
         .accent-color { color: var(--main); }
         .wsp-float {
             position: fixed; bottom: 30px; right: 30px; background: #25d366;
             width: 65px; height: 65px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 35px;
-            color: white; z-index: 9999; text-decoration: none;
+            align-items: center; justify-content: center; font-size: 35px; color: white; z-index: 9999;
         }
     </style>
 </head>
@@ -58,13 +51,9 @@
 
     <a href="https://wa.me/51933589431" class="wsp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 backdrop-blur shadow">
+    <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 shadow">
         <div class="container py-2">
-            <a class="navbar-brand fw-black fs-2" href="#">ELMAQUI <span class="accent-color">TECH</span></a>
-            <button class="btn btn-link position-relative text-white p-0" data-bs-toggle="offcanvas" data-bs-target="#cart">
-                <i class="fa-solid fa-cart-shopping fs-4"></i>
-                <span id="cCount" class="badge bg-primary rounded-pill" style="position: absolute; top: -10px; right: -10px;">0</span>
-            </button>
+            <a class="navbar-brand fw-bold fs-2" href="#">ELMAQUI <span class="accent-color">TECH</span></a>
         </div>
     </nav>
 
@@ -80,26 +69,22 @@
     </section>
 
     <section id="store" class="section-padding container">
-        <h2 class="display-4 fw-black text-center mb-5">ARMAMENTO <span class="accent-color">ELITE</span></h2>
+        <h2 class="display-4 fw-bold text-center mb-5">ARMAMENTO <span class="accent-color">ELITE</span></h2>
         <div class="row g-4" id="pGrid"></div>
     </section>
 
     <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title fw-bold" id="mTitle"></h4>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
+                <div class="modal-header border-0"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
                 <div class="modal-body">
                     <div class="row g-4">
+                        <div class="col-md-6"><img id="mImg" src="" alt="Producto"></div>
                         <div class="col-md-6">
-                            <img id="mImg" src="" alt="Producto">
-                        </div>
-                        <div class="col-md-6 d-flex flex-column">
-                            <div id="mSpecs" class="flex-grow-1"></div>
+                            <h3 class="fw-bold" id="mTitle"></h3>
+                            <div id="mSpecs"></div>
                             <h2 class="accent-color fw-bold mt-3" id="mPrice"></h2>
-                            <button class="btn btn-primary w-100 mt-3 py-3 rounded-pill fw-bold" id="mAddBtn">AÑADIR AL CARRITO</button>
+                            <button class="btn btn-primary w-100 mt-3 py-3 rounded-pill fw-bold" onclick="addFromModal()">AÑADIR AL CARRITO</button>
                         </div>
                     </div>
                 </div>
@@ -107,108 +92,41 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container text-center">
-            <h3 class="fw-bold mb-3">ELMAQUI <span class="accent-color">TECH</span></h3>
-            <p class="text-secondary small">&copy; 2024 ELMAQUI TECH. Todos los derechos reservados.</p>
-            <p class="text-secondary small">Contacto: +51 933 589 431</p>
-        </div>
-    </footer>
-
-    <div class="offcanvas offcanvas-end bg-dark text-white" id="cart">
-        <div class="offcanvas-header border-bottom border-secondary">
-            <h5 class="fw-bold m-0">MI ARSENAL</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column">
-            <div id="cItems"></div>
-            <div class="mt-auto pt-4 border-top">
-                <div class="d-flex justify-content-between fs-4 fw-bold mb-4">
-                    <span>Total</span><span id="cTotal">S/ 0</span>
-                </div>
-                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold" onclick="sendWsp()">COMPRAR POR WHATSAPP</button>
-            </div>
-        </div>
-    </div>
+    <footer><div class="container text-center"><p class="text-secondary">&copy; 2024 ELMAQUI TECH. +51 933 589 431</p></div></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const prods = [
-            { 
-                id: 1, name: "SteelSeries Apex 7 TKL", price: 79.0, img: "teclado con ia 2.jpg",
-                specs: { "Medidas": "355 x 139 x 40 mm", "Switches": "SteelSeries QX2 Mechanical", "Pantalla": "OLED Smart Display integrada", "Construcción": "Aluminio de grado aeroespacial" }
-            },
-            { 
-                id: 2, name: "Pad Gamer Pro XL", price: 23.9, img: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=800",
-                specs: { "Medidas": "900 x 400 x 4 mm", "Superficie": "Micro-tejido de alta densidad", "Base": "Caucho antideslizante", "Extras": "Bordes con costura antidesgaste" }
-            },
-            { 
-                id: 3, name: "Mouse Gaming Pro", price: 69.9, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=800",
-                specs: { "Medidas": "124 x 68 x 43 mm", "Sensor": "Óptico 16,000 DPI", "Botones": "7 Programables", "Vida útil": "50 Millones de clicks" }
-            },
-            { 
-                id: 4, name: "Monitor 240Hz OLED", price: 459.9, img: "https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=800",
-                specs: { "Resolución": "4K Ultra HD 3840x2160", "Frecuencia": "240Hz Nativo", "Tiempo Respuesta": "0.1ms", "Panel": "OLED con HDR1000" }
-            }
+            { id: 1, name: "SteelSeries Apex 7 TKL", price: 79.0, img: "teclado con ia 2.jpg", specs: { "Medidas": "355x139x40mm", "Switches": "Mecánicos Brown", "Pantalla": "OLED Smart" } },
+            { id: 2, name: "Pad Gamer Pro XL", price: 23.9, img: "http://googleusercontent.com/image_collection/image_retrieval/6582303276521495560_0", specs: { "Medidas": "900x400x4mm", "Superficie": "Micro-tejido Speed", "Base": "Goma Antideslizante" } },
+            { id: 3, name: "Mouse Gaming Pro", price: 69.9, img: "http://googleusercontent.com/image_collection/image_retrieval/7997407450422759326_0", specs: { "Medidas": "125x63x40mm", "Sensor": "Hero 25K DPI", "Peso": "63g Ultra Ligero" } },
+            { id: 4, name: "Monitor 240Hz OLED", price: 459.9, img: "http://googleusercontent.com/image_collection/image_retrieval/16822785771965528772_0", specs: { "Resolución": "4K Ultra HD", "Frecuencia": "240Hz Nativo", "Panel": "OLED Quantum Dot" } }
         ];
 
-        let myCart = [];
-
+        let currentId = null;
         function render() {
             document.getElementById('pGrid').innerHTML = prods.map(p => `
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card text-center" onclick="showDetail(${p.id})">
-                        <div class="img-box"><img src="${p.img}" alt="${p.name}"></div>
+                        <div class="img-box"><img src="${p.img}"></div>
                         <h5 class="fw-bold mb-1">${p.name}</h5>
                         <p class="accent-color fs-5 fw-bold mb-0">S/ ${p.price.toFixed(2)}</p>
-                        <small class="text-secondary mt-2 d-block">Click para detalles</small>
                     </div>
                 </div>
             `).join('');
         }
 
         function showDetail(id) {
+            currentId = id;
             const p = prods.find(x => x.id === id);
             document.getElementById('mTitle').innerText = p.name;
             document.getElementById('mImg').src = p.img;
             document.getElementById('mPrice').innerText = `S/ ${p.price.toFixed(2)}`;
-            
-            let specsHtml = '';
-            for (const [key, value] of Object.entries(p.specs)) {
-                specsHtml += `<span class="spec-label">${key}</span><span class="spec-value">${value}</span>`;
-            }
-            document.getElementById('mSpecs').innerHTML = specsHtml;
-            
-            document.getElementById('mAddBtn').onclick = () => { 
-                add(p.id); 
-                bootstrap.Modal.getInstance(document.getElementById('detailModal')).hide(); 
-            };
-            
+            document.getElementById('mSpecs').innerHTML = Object.entries(p.specs).map(([k,v]) => `<span class="spec-label">${k}</span><span class="spec-value">${v}</span>`).join('');
             new bootstrap.Modal(document.getElementById('detailModal')).show();
         }
 
-        function add(id) {
-            myCart.push(prods.find(x => x.id === id));
-            update();
-        }
-
-        function update() {
-            document.getElementById('cCount').innerText = myCart.length;
-            document.getElementById('cItems').innerHTML = myCart.map((p, i) => `
-                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-secondary bg-opacity-10 rounded-4">
-                    <span class="small fw-bold">${p.name}</span>
-                    <button class="btn btn-sm btn-danger" onclick="myCart.splice(${i},1);update()">×</button>
-                </div>
-            `).join('');
-            document.getElementById('cTotal').innerText = `S/ ${myCart.reduce((s, p) => s + p.price, 0).toFixed(2)}`;
-        }
-
-        function sendWsp() {
-            if(myCart.length === 0) return alert("El carrito está vacío");
-            let msg = "¡Hola ELMAQUI TECH! Deseo comprar:%0A" + myCart.map(p => `• ${p.name} (S/ ${p.price})`).join('%0A');
-            window.open(`https://wa.me/51933589431?text=${msg}%0A*Total: ${document.getElementById('cTotal').innerText}*`);
-        }
-
+        function addFromModal() { alert("Añadido al arsenal"); }
         render();
     </script>
 </body>
