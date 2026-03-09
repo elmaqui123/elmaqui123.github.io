@@ -30,27 +30,27 @@
         .section-padding { padding: 80px 0; }
         .product-card {
             background: var(--card); border: 1px solid #333; border-radius: 30px;
-            padding: 30px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); cursor: pointer; height: 100%;
+            padding: 25px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); cursor: pointer; height: 100%;
         }
         .product-card:hover { transform: scale(1.05); border-color: var(--main); box-shadow: 0 20px 40px rgba(0, 113, 227, 0.2); }
-        .img-box { height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; overflow: hidden; border-radius: 15px; background: #222; }
-        .img-box img { max-height: 100%; width: 100%; object-fit: cover; }
+        .img-box { height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; overflow: hidden; border-radius: 15px; background: #222; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
 
         /* MODAL DETALLES */
-        .modal-content { background: #1c1c1e; border-radius: 30px; border: 1px solid #333; color: white; }
-        .modal-header { border-bottom: 1px solid #333; }
-        .modal-body img { border-radius: 20px; width: 100%; height: 100%; object-fit: cover; max-height: 400px; }
-        .spec-label { color: var(--main); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; display: block; }
-        .spec-value { font-size: 1.1rem; margin-bottom: 15px; display: block; }
+        .modal-content { background: #1c1c1e; border-radius: 30px; border: 1px solid #333; color: white; padding: 20px; }
+        .modal-header { border: none; }
+        .modal-body img { border-radius: 20px; width: 100%; height: 350px; object-fit: cover; }
+        .spec-label { color: var(--main); font-weight: bold; text-transform: uppercase; font-size: 0.75rem; display: block; margin-top: 10px; }
+        .spec-value { font-size: 1rem; color: #ccc; display: block; margin-bottom: 5px; }
 
-        /* FOOTER Y OTROS */
-        footer { background: #080808; padding: 60px 0 20px; border-top: 1px solid #222; }
+        /* FOOTER */
+        footer { background: #080808; padding: 40px 0; border-top: 1px solid #222; margin-top: 50px; }
         .accent-color { color: var(--main); }
         .wsp-float {
             position: fixed; bottom: 30px; right: 30px; background: #25d366;
             width: 65px; height: 65px; border-radius: 50%; display: flex;
             align-items: center; justify-content: center; font-size: 35px;
-            color: white; z-index: 9999;
+            color: white; z-index: 9999; text-decoration: none;
         }
     </style>
 </head>
@@ -63,7 +63,7 @@
             <a class="navbar-brand fw-black fs-2" href="#">ELMAQUI <span class="accent-color">TECH</span></a>
             <button class="btn btn-link position-relative text-white p-0" data-bs-toggle="offcanvas" data-bs-target="#cart">
                 <i class="fa-solid fa-cart-shopping fs-4"></i>
-                <span id="cCount" class="cart-count badge bg-primary rounded-pill" style="position: absolute; top: -10px; right: -10px;">0</span>
+                <span id="cCount" class="badge bg-primary rounded-pill" style="position: absolute; top: -10px; right: -10px;">0</span>
             </button>
         </div>
     </nav>
@@ -80,7 +80,7 @@
     </section>
 
     <section id="store" class="section-padding container">
-        <h2 class="display-4 fw-black text-center mb-5">ARMAMENTO ELITE</h2>
+        <h2 class="display-4 fw-black text-center mb-5">ARMAMENTO <span class="accent-color">ELITE</span></h2>
         <div class="row g-4" id="pGrid"></div>
     </section>
 
@@ -88,7 +88,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="mTitle">Detalles</h5>
+                    <h4 class="modal-title fw-bold" id="mTitle"></h4>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -96,10 +96,10 @@
                         <div class="col-md-6">
                             <img id="mImg" src="" alt="Producto">
                         </div>
-                        <div class="col-md-6">
-                            <div id="mSpecs"></div>
-                            <h3 class="accent-color fw-bold mt-3" id="mPrice"></h3>
-                            <button class="btn btn-primary w-100 mt-4 rounded-pill fw-bold" id="mAddBtn">AÑADIR AL ARSENAL</button>
+                        <div class="col-md-6 d-flex flex-column">
+                            <div id="mSpecs" class="flex-grow-1"></div>
+                            <h2 class="accent-color fw-bold mt-3" id="mPrice"></h2>
+                            <button class="btn btn-primary w-100 mt-3 py-3 rounded-pill fw-bold" id="mAddBtn">AÑADIR AL CARRITO</button>
                         </div>
                     </div>
                 </div>
@@ -109,23 +109,24 @@
 
     <footer>
         <div class="container text-center">
-            <h3 class="fw-bold mb-4">ELMAQUI <span class="accent-color">TECH</span></h3>
-            <p class="text-secondary">&copy; 2024 ELMAQUI TECH. +51 933 589 431</p>
+            <h3 class="fw-bold mb-3">ELMAQUI <span class="accent-color">TECH</span></h3>
+            <p class="text-secondary small">&copy; 2024 ELMAQUI TECH. Todos los derechos reservados.</p>
+            <p class="text-secondary small">Contacto: +51 933 589 431</p>
         </div>
     </footer>
 
     <div class="offcanvas offcanvas-end bg-dark text-white" id="cart">
         <div class="offcanvas-header border-bottom border-secondary">
-            <h5 class="fw-bold m-0">TU ARSENAL</h5>
+            <h5 class="fw-bold m-0">MI ARSENAL</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body d-flex flex-column">
             <div id="cItems"></div>
             <div class="mt-auto pt-4 border-top">
-                <div class="d-flex justify-content-between fs-3 fw-bold mb-4">
+                <div class="d-flex justify-content-between fs-4 fw-bold mb-4">
                     <span>Total</span><span id="cTotal">S/ 0</span>
                 </div>
-                <button class="btn btn-primary w-100 py-3 rounded-pill" onclick="sendWsp()">COMPRAR POR WHATSAPP</button>
+                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold" onclick="sendWsp()">COMPRAR POR WHATSAPP</button>
             </div>
         </div>
     </div>
@@ -135,19 +136,19 @@
         const prods = [
             { 
                 id: 1, name: "SteelSeries Apex 7 TKL", price: 79.0, img: "teclado con ia 2.jpg",
-                specs: { "Medidas": "355 x 139 x 40 mm", "Interruptores": "Mecánicos Brown", "Iluminación": "RGB Tecla a Tecla", "Material": "Aleación de Aluminio" }
+                specs: { "Medidas": "355 x 139 x 40 mm", "Switches": "SteelSeries QX2 Mechanical", "Pantalla": "OLED Smart Display integrada", "Construcción": "Aluminio de grado aeroespacial" }
             },
             { 
-                id: 2, name: "Pad Gamer Pro XL", price: 23.9, img: "https://images.unsplash.com/photo-1629429464243-7e3e97014197?q=80&w=600",
-                specs: { "Medidas": "900 x 400 x 4 mm", "Superficie": "Micro-tejido Speed", "Base": "Goma Antideslizante", "Bordes": "Costura Reforzada" }
+                id: 2, name: "Pad Gamer Pro XL", price: 23.9, img: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=800",
+                specs: { "Medidas": "900 x 400 x 4 mm", "Superficie": "Micro-tejido de alta densidad", "Base": "Caucho antideslizante", "Extras": "Bordes con costura antidesgaste" }
             },
             { 
-                id: 3, name: "Mouse Gaming Pro", price: 69.9, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=600",
-                specs: { "Medidas": "125 x 63 x 40 mm", "Sensor": "Hero 25K DPI", "Peso": "63g Ultra Ligero", "Botones": "6 Programables" }
+                id: 3, name: "Mouse Gaming Pro", price: 69.9, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=800",
+                specs: { "Medidas": "124 x 68 x 43 mm", "Sensor": "Óptico 16,000 DPI", "Botones": "7 Programables", "Vida útil": "50 Millones de clicks" }
             },
             { 
-                id: 4, name: "Monitor 240Hz OLED", price: 459.9, img: "https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=600",
-                specs: { "Resolución": "4K Nativo (3840x2160)", "Frecuencia": "240Hz", "Panel": "OLED Quantum Dot", "Tiempo de Respuesta": "0.03ms GtG" }
+                id: 4, name: "Monitor 240Hz OLED", price: 459.9, img: "https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=800",
+                specs: { "Resolución": "4K Ultra HD 3840x2160", "Frecuencia": "240Hz Nativo", "Tiempo Respuesta": "0.1ms", "Panel": "OLED con HDR1000" }
             }
         ];
 
@@ -158,9 +159,9 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="product-card text-center" onclick="showDetail(${p.id})">
                         <div class="img-box"><img src="${p.img}" alt="${p.name}"></div>
-                        <h4 class="fw-bold mb-1">${p.name}</h4>
-                        <p class="accent-color fs-4 fw-bold">S/ ${p.price.toFixed(2)}</p>
-                        <small class="text-secondary">Ver más detalles</small>
+                        <h5 class="fw-bold mb-1">${p.name}</h5>
+                        <p class="accent-color fs-5 fw-bold mb-0">S/ ${p.price.toFixed(2)}</p>
+                        <small class="text-secondary mt-2 d-block">Click para detalles</small>
                     </div>
                 </div>
             `).join('');
@@ -178,7 +179,10 @@
             }
             document.getElementById('mSpecs').innerHTML = specsHtml;
             
-            document.getElementById('mAddBtn').onclick = () => { add(p.id); bootstrap.Modal.getInstance(document.getElementById('detailModal')).hide(); };
+            document.getElementById('mAddBtn').onclick = () => { 
+                add(p.id); 
+                bootstrap.Modal.getInstance(document.getElementById('detailModal')).hide(); 
+            };
             
             new bootstrap.Modal(document.getElementById('detailModal')).show();
         }
@@ -191,8 +195,8 @@
         function update() {
             document.getElementById('cCount').innerText = myCart.length;
             document.getElementById('cItems').innerHTML = myCart.map((p, i) => `
-                <div class="d-flex justify-content-between mb-3 p-3 bg-secondary bg-opacity-10 rounded-4">
-                    <span>${p.name}</span>
+                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-secondary bg-opacity-10 rounded-4">
+                    <span class="small fw-bold">${p.name}</span>
                     <button class="btn btn-sm btn-danger" onclick="myCart.splice(${i},1);update()">×</button>
                 </div>
             `).join('');
@@ -200,8 +204,9 @@
         }
 
         function sendWsp() {
-            let msg = "¡Hola ELMAQUI TECH! Mi pedido:%0A" + myCart.map(p => `• ${p.name}`).join('%0A');
-            window.open(`https://wa.me/51933589431?text=${msg}%0ATotal: ${document.getElementById('cTotal').innerText}`);
+            if(myCart.length === 0) return alert("El carrito está vacío");
+            let msg = "¡Hola ELMAQUI TECH! Deseo comprar:%0A" + myCart.map(p => `• ${p.name} (S/ ${p.price})`).join('%0A');
+            window.open(`https://wa.me/51933589431?text=${msg}%0A*Total: ${document.getElementById('cTotal').innerText}*`);
         }
 
         render();
