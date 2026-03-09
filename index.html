@@ -13,7 +13,7 @@
         :root { --main: #0071e3; --dark: #000; --card: #161617; }
         body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HERO - CONFIGURACIÓN DEL VIDEO DE FONDO */
+        /* HERO - VIDEO DE FONDO */
         .hero { 
             position: relative;
             height: 100vh; 
@@ -21,20 +21,21 @@
             align-items: center; 
             justify-content: center;
             overflow: hidden;
-            background-color: #000; /* Fondo negro mientras carga */
+            background-color: #000;
         }
         
-        #heroVideo {
+        /* El video se ajusta a todo el ancho y alto */
+        #bgVideo {
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 100%;
+            transform: translate(-50%, -50%);
+            min-width: 100%; 
             min-height: 100%;
             width: auto;
             height: auto;
             z-index: 1;
-            transform: translate(-50%, -50%);
-            object-fit: cover; /* Esto hace que el video llene toda la pantalla */
+            object-fit: cover;
         }
 
         .hero-overlay {
@@ -43,7 +44,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Capa oscura para que el texto resalte */
+            background: rgba(0, 0, 0, 0.5); /* Oscurece el video para que el texto resalte */
             z-index: 2;
         }
 
@@ -55,7 +56,7 @@
 
         .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
 
-        /* STORYTELLING SECTIONS */
+        /* SECCIONES */
         .section-padding { padding: 100px 0; }
         .feature-img { border-radius: 40px; width: 100%; height: 500px; object-fit: cover; }
         .accent-color { color: var(--main); }
@@ -71,9 +72,8 @@
         }
         .img-box { height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
         .img-box img { max-height: 100%; transition: 0.5s; }
-        .product-card:hover img { transform: rotate(-5deg) scale(1.1); }
 
-        /* WHATSAPP FLOTANTE */
+        /* WHATSAPP */
         .wsp-float {
             position: fixed; bottom: 30px; right: 30px; background: #25d366;
             width: 65px; height: 65px; border-radius: 50%; display: flex;
@@ -101,8 +101,9 @@
     </nav>
 
     <section class="hero">
-        <video autoplay muted loop playsinline id="heroVideo">
+        <video autoplay muted loop playsinline id="bgVideo">
             <source src="68dd4cb3-3662-4731-bdbf-c54a2c9c171b_watermark.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
         </video>
         <div class="hero-overlay"></div>
 
@@ -130,18 +131,15 @@
         </div>
     </section>
 
-    <section id="store" class="section-padding bg-dark shadow-inset">
+    <section id="store" class="section-padding bg-dark">
         <div class="container text-center mb-5">
             <h2 class="display-4 fw-black mb-3" data-aos="fade-up">ARMAMENTO ELITE</h2>
-            <p class="text-secondary fs-5" data-aos="fade-up">Stock real para gamers de verdad.</p>
-        </div>
-        <div class="container">
-            <div class="row g-4" id="pGrid"></div>
+            <div class="row g-4 mt-4" id="pGrid"></div>
         </div>
     </section>
 
-    <div class="offcanvas offcanvas-end bg-dark text-white shadow-lg" id="cart">
-        <div class="offcanvas-header border-bottom border-secondary py-4">
+    <div class="offcanvas offcanvas-end bg-dark text-white" id="cart">
+        <div class="offcanvas-header border-bottom border-secondary">
             <h5 class="fw-bold m-0">TU ARSENAL</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
@@ -152,7 +150,7 @@
                     <span>Total</span>
                     <span id="cTotal">S/ 0</span>
                 </div>
-                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow" onclick="sendWsp()">COMPRAR POR WHATSAPP</button>
+                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold" onclick="sendWsp()">COMPRAR POR WHATSAPP</button>
             </div>
         </div>
     </div>
@@ -162,8 +160,16 @@
     <script>
         AOS.init();
 
+        // FORZAR REPRODUCCIÓN DEL VIDEO
+        window.addEventListener('load', function() {
+            var video = document.getElementById('bgVideo');
+            video.play().catch(function(error) {
+                console.log("El autoplay fue bloqueado, intentando de nuevo...");
+            });
+        });
+
         const prods = [
-            { id: 1, name: "SteelSeries Apex 7 TKL", price: 79, img: "teclado con ia 2.jpg" },
+            { id: 1, name: "SteelSeries Apex 7 TKL", price: 790, img: "teclado con ia 2.jpg" },
             { id: 2, name: "NVIDIA RTX 4090", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
             { id: 3, name: "Mouse Gaming Pro", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
             { id: 4, name: "Monitor 240Hz OLED", price: 3100, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
