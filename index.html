@@ -3,127 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELMAQUI TECH | SteelSeries Apex 7 TKL</title>
+    <title>ELMAQUI TECH | Rendimiento Sin Precedentes</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        :root { --main: #0071e3; --dark: #000; --card: #161617; --price: #ff3b30; }
+        :root { --main: #0071e3; --dark: #000; --card: #161617; }
         body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HERO - EL IMPACTO */
+        /* HERO - EL GANCHO */
         .hero { 
             height: 100vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), 
-                        url('teclado con ia.jpg'); /* TU IMAGEN DE IA */
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2000');
             background-size: cover; background-position: center; background-attachment: fixed;
         }
         .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
 
-        /* VIDEO SECTION */
-        .video-box { 
-            max-width: 900px; margin: -150px auto 50px; position: relative; z-index: 10;
-            border-radius: 40px; overflow: hidden; border: 2px solid #333;
-            box-shadow: 0 0 50px rgba(0, 113, 227, 0.4);
-        }
-
-        /* PRODUCTO ÚNICO */
-        .product-card {
-            background: var(--card); border: 2px solid var(--main); border-radius: 40px;
-            padding: 50px; transition: 0.5s; position: relative;
-        }
-        .price-tag { color: var(--price); font-size: 5rem; font-weight: 900; line-height: 1; }
-        .old-price { text-decoration: line-through; color: #666; font-size: 1.5rem; }
-
-        .feature-img { border-radius: 30px; width: 100%; height: 400px; object-fit: cover; border: 1px solid #333; }
+        /* STORYTELLING SECTIONS */
+        .section-padding { padding: 100px 0; }
+        .feature-img { border-radius: 40px; width: 100%; height: 500px; object-fit: cover; }
         .accent-color { color: var(--main); }
 
+        /* PRODUCTOS - EL CIERRE */
+        .product-card {
+            background: var(--card); border: 1px solid #333; border-radius: 30px;
+            padding: 35px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .product-card:hover { 
+            transform: scale(1.05); border-color: var(--main);
+            box-shadow: 0 30px 60px rgba(0, 113, 227, 0.2);
+        }
+        .img-box { height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .img-box img { max-height: 100%; transition: 0.5s; }
+        .product-card:hover img { transform: rotate(-5deg) scale(1.1); }
+
+        /* WHATSAPP FLOTANTE */
         .wsp-float {
             position: fixed; bottom: 30px; right: 30px; background: #25d366;
             width: 65px; height: 65px; border-radius: 50%; display: flex;
             align-items: center; justify-content: center; font-size: 35px;
             color: white; z-index: 9999; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
         }
-        
-        .badge-huacho {
-            background: var(--main); color: white; padding: 10px 20px;
-            border-radius: 50px; font-weight: bold; display: inline-block; margin-bottom: 20px;
-        }
+        .wsp-float:hover { transform: scale(1.1); color: white; }
+
+        .cart-count { background: var(--main); color: white; border-radius: 50px; padding: 2px 8px; font-size: 12px; position: absolute; top: -5px; right: -5px; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/51933589431?text=¡LO QUIERO! Soy de Huacho y quiero el SteelSeries de 79 soles." class="wsp-float" target="_blank">
+    <a href="https://wa.me/51933589431?text=Hola%20ELMAQUI%20TECH!%20Quiero%20llevar%20mi%20setup%20al%20siguiente%20nivel." class="wsp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 shadow">
-        <div class="container py-2 text-center d-block">
+    <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 backdrop-blur shadow">
+        <div class="container py-2">
             <a class="navbar-brand fw-black fs-2" href="#">ELMAQUI <span class="accent-color">TECH</span></a>
+            <button class="btn btn-link position-relative text-white p-0" data-bs-toggle="offcanvas" data-bs-target="#cart">
+                <i class="fa-solid fa-cart-shopping fs-4"></i>
+                <span id="cCount" class="cart-count">0</span>
+            </button>
         </div>
     </nav>
 
     <section class="hero text-center">
         <div data-aos="zoom-out" data-aos-duration="1500">
-            <span class="badge-huacho" data-aos="fade-down">DISPONIBLE EN HUACHO</span>
+            <p class="text-uppercase fw-bold mb-0">Hardware Grado Profesional</p>
             <h1 class="hero-title">ROMPE LAS<br>REGLAS.</h1>
-            <p class="fs-4 text-light opacity-75 mt-3">SteelSeries Apex 7 TKL: El arma definitiva.</p>
+            <a href="#store" class="btn btn-primary rounded-pill px-5 py-3 mt-4 fw-bold shadow">EXPLORAR TIENDA</a>
         </div>
     </section>
 
-    <div class="container px-4">
-        <div class="video-box" data-aos="flip-up">
-            <video autoplay muted loop playsinline class="w-100">
-                <source src="68dd4cb3-3662-4731-bdbf-c54a2c9c171b_watermark.mp4" type="video/mp4">
-            </video>
+    <section class="section-padding container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h2 class="display-3 fw-bold mb-4">No vendemos piezas,<br><span class="accent-color">vendemos poder.</span></h2>
+                <p class="fs-5 text-secondary">En ELMAQUI TECH seleccionamos cada componente como si fuera para nuestra propia estación de combate. Si no es lo mejor, no está en nuestro catálogo.</p>
+                <div class="d-flex gap-4 mt-4 text-center">
+                    <div><h3 class="fw-bold accent-color mb-0">4K</h3><small>NATIVO</small></div>
+                    <div><h3 class="fw-bold accent-color mb-0">0ms</h3><small>DELAY</small></div>
+                    <div><h3 class="fw-bold accent-color mb-0">∞</h3><small>PODER</small></div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1200" class="feature-img shadow-lg" alt="Setup">
+            </div>
+        </div>
+    </section>
+
+    <section id="store" class="section-padding bg-dark shadow-inset">
+        <div class="container text-center mb-5">
+            <h2 class="display-4 fw-black mb-3" data-aos="fade-up">ARMAMENTO ELITE</h2>
+            <p class="text-secondary fs-5" data-aos="fade-up">Stock real para gamers de verdad.</p>
+        </div>
+        <div class="container">
+            <div class="row g-4" id="pGrid"></div>
+        </div>
+    </section>
+
+    <div class="offcanvas offcanvas-end bg-dark text-white shadow-lg" id="cart">
+        <div class="offcanvas-header border-bottom border-secondary py-4">
+            <h5 class="fw-bold m-0">TU ARSENAL</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div id="cItems"></div>
+            <div class="mt-auto pt-4 border-top">
+                <div class="d-flex justify-content-between fs-3 fw-bold mb-4">
+                    <span>Total</span>
+                    <span id="cTotal">S/ 0</span>
+                </div>
+                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow" onclick="sendWsp()">COMPRAR POR WHATSAPP</button>
+            </div>
         </div>
     </div>
-
-    <section id="store" class="py-5 container text-center">
-        <div class="product-card" data-aos="zoom-in">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <img src="teclado con ia 2.jpg" class="feature-img shadow-lg mb-4 mb-lg-0" alt="SteelSeries IA">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="display-3 fw-black mb-0">OFERTA <span class="accent-color">FLASH</span></h2>
-                    <p class="old-price mb-0">Precio Lima: S/ 450.00</p>
-                    <div class="price-tag mb-4">S/ 79.00</div>
-                    <p class="fs-5 text-secondary">¿Vas a seguir esperando el envío de Lima? Llévatelo hoy mismo. Switches mecánicos, pantalla OLED y RGB reactivo.</p>
-                    <a href="https://wa.me/51933589431?text=Quiero%20el%20teclado%20SteelSeries%20de%2079%20soles%20ya" class="btn btn-primary btn-lg w-100 py-4 rounded-pill fw-bold fs-3 shadow">COMPRAR AHORA</a>
-                    <p class="mt-3 text-warning"><i class="fa-solid fa-fire me-2"></i>¡Solo quedan 5 unidades en stock!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-5 container">
-        <div class="row g-5">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <h4 class="fw-bold accent-color">SIN DELAY</h4>
-                <p class="text-secondary">Respuesta instantánea. En el gaming, un milisegundo es la diferencia entre ganar o morir.</p>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <h4 class="fw-bold accent-color">DURABILIDAD</h4>
-                <p class="text-secondary">Aleación de aluminio de grado aeronáutico. Construido para durar toda la vida.</p>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <h4 class="fw-bold accent-color">LOCAL</h4>
-                <p class="text-secondary">Punto de entrega en el centro de Huacho. Sin estafas, sin esperas.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-5 text-center border-top border-secondary mt-5">
-        <p class="text-secondary">© 2026 ELMAQUI TECH - El Rey del Hardware en Huacho.</p>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init();
+
+        const prods = [
+            { id: 1, name: "NVIDIA RTX 4090", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
+            { id: 2, name: "Teclado Mecánico RGB", price: 420, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=400" },
+            { id: 3, name: "Mouse Gaming Pro", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
+            { id: 4, name: "Monitor 240Hz OLED", price: 3100, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
+        ];
+
+        let myCart = [];
+
+        function render() {
+            document.getElementById('pGrid').innerHTML = prods.map(p => `
+                <div class="col-md-6 col-lg-3" data-aos="zoom-in">
+                    <div class="product-card text-center" onclick="add(${p.id})">
+                        <div class="img-box"><img src="${p.img}" class="img-fluid"></div>
+                        <h4 class="fw-bold mb-1">${p.name}</h4>
+                        <p class="accent-color fs-4 fw-bold">S/ ${p.price}</p>
+                        <button class="btn btn-outline-light w-100 rounded-pill">Añadir al Carrito</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function add(id) {
+            myCart.push(prods.find(x => x.id === id));
+            update();
+            const badge = document.getElementById('cCount');
+            badge.style.transform = 'scale(1.5)';
+            setTimeout(() => badge.style.transform = 'scale(1)', 200);
+        }
+
+        function update() {
+            document.getElementById('cCount').innerText = myCart.length;
+            document.getElementById('cItems').innerHTML = myCart.map((p, i) => `
+                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-secondary bg-opacity-25 rounded-4">
+                    <div class="small fw-bold">${p.name}</div>
+                    <div>
+                        <span class="me-2">S/ ${p.price}</span>
+                        <button class="btn btn-sm btn-outline-danger" onclick="myCart.splice(${i},1);update()">×</button>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('cTotal').innerText = `S/ ${myCart.reduce((s, p) => s + p.price, 0)}`;
+        }
+
+        function sendWsp() {
+            if(myCart.length === 0) return alert("Tu arsenal está vacío");
+            let msg = "¡Hola ELMAQUI TECH! 🚀 Vengo de la web y quiero estos productos:%0A";
+            myCart.forEach(p => msg += `• ${p.name} (S/ ${p.price})%0A`);
+            msg += `%0A*TOTAL: ${document.getElementById('cTotal').innerText}*`;
+            window.open(`https://wa.me/51933589431?text=${msg}`);
+        }
+
+        render();
     </script>
 </body>
 </html>
