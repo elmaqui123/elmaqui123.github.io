@@ -1,184 +1,108 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELMAQUI TECH | Rendimiento Sin Precedentes</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        :root { --main: #0071e3; --dark: #000; --card: #161617; }
-        body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-
-        /* HERO - EL GANCHO */
-        .hero { 
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2000');
-            background-size: cover; background-position: center; background-attachment: fixed;
-        }
-        .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
-
-        /* STORYTELLING SECTIONS */
-        .section-padding { padding: 100px 0; }
-        .feature-img { border-radius: 40px; width: 100%; height: 500px; object-fit: cover; }
-        .accent-color { color: var(--main); }
-
-        /* PRODUCTOS - EL CIERRE */
-        .product-card {
-            background: var(--card); border: 1px solid #333; border-radius: 30px;
-            padding: 35px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-        .product-card:hover { 
-            transform: scale(1.05); border-color: var(--main);
-            box-shadow: 0 30px 60px rgba(0, 113, 227, 0.2);
-        }
-        .img-box { height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .img-box img { max-height: 100%; transition: 0.5s; }
-        .product-card:hover img { transform: rotate(-5deg) scale(1.1); }
-
-        /* WHATSAPP FLOTANTE */
-        .wsp-float {
-            position: fixed; bottom: 30px; right: 30px; background: #25d366;
-            width: 65px; height: 65px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 35px;
-            color: white; z-index: 9999; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            transition: 0.3s;
-        }
-        .wsp-float:hover { transform: scale(1.1); color: white; }
-
-        .cart-count { background: var(--main); color: white; border-radius: 50px; padding: 2px 8px; font-size: 12px; position: absolute; top: -5px; right: -5px; }
-    </style>
-</head>
-<body>
-
-    <a href="https://wa.me/51933589431?text=Hola%20ELMAQUI%20TECH!%20Quiero%20llevar%20mi%20setup%20al%20siguiente%20nivel." class="wsp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 backdrop-blur shadow">
-        <div class="container py-2">
-            <a class="navbar-brand fw-black fs-2" href="#">ELMAQUI <span class="accent-color">TECH</span></a>
-            <button class="btn btn-link position-relative text-white p-0" data-bs-toggle="offcanvas" data-bs-target="#cart">
-                <i class="fa-solid fa-cart-shopping fs-4"></i>
-                <span id="cCount" class="cart-count">0</span>
-            </button>
+<header class="vh-100 d-flex align-items-center justify-content-center text-center" 
+        style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('teclado con ia.jpg'); background-size: cover; background-position: center;">
+    <div class="container" data-aos="zoom-in">
+        <h1 class="display-1 fw-black text-white mb-3">STEELSERIES <span class="text-primary">APEX 7</span></h1>
+        <p class="fs-3 text-light opacity-75">El teclado mecánico que los profesionales no quieren que tengas.</p>
+        <div class="mt-5">
+            <span class="badge bg-danger fs-4 p-3 rounded-pill shadow-lg">OFERTA EXCLUSIVA EN HUACHO</span>
+            <h2 class="display-2 fw-bold text-white mt-3">S/ 79.00</h2>
+            <p class="text-decoration-line-through text-secondary fs-4">Precio Regular: S/ 450.00</p>
         </div>
-    </nav>
+        <a href="#comprar" class="btn btn-primary btn-lg px-5 py-3 mt-4 rounded-pill fw-bold shadow-glow">¡LO QUIERO AHORA!</a>
+    </div>
+</header>
 
-    <section class="hero text-center">
-        <div data-aos="zoom-out" data-aos-duration="1500">
-            <p class="text-uppercase fw-bold mb-0">Hardware Grado Profesional</p>
-            <h1 class="hero-title">ROMPE LAS<br>REGLAS.</h1>
-            <a href="#store" class="btn btn-primary rounded-pill px-5 py-3 mt-4 fw-bold shadow">EXPLORAR TIENDA</a>
+<section class="py-5 bg-black text-white overflow-hidden">
+    <div class="container text-center">
+        <h2 class="display-4 fw-black mb-5" data-aos="fade-up">
+            ROMPE LAS REGLAS <br>
+            <span class="fs-5 fw-light text-secondary">Domina el juego con tecnología de punta.</span>
+        </h2>
+        
+        <div class="video-container rounded-5 shadow-lg mx-auto" style="max-width: 800px; border: 2px solid #333;" data-aos="flip-up">
+            <video autoplay muted loop playsinline class="w-100 rounded-5">
+                <source src="68dd4cb3-3662-4731-bdbf-c54a2c9c171b_watermark.mp4" type="video/mp4">
+            </video>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section-padding container">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6" data-aos="fade-right">
-                <h2 class="display-3 fw-bold mb-4">No vendemos piezas,<br><span class="accent-color">vendemos poder.</span></h2>
-                <p class="fs-5 text-secondary">En ELMAQUI TECH seleccionamos cada componente como si fuera para nuestra propia estación de combate. Si no es lo mejor, no está en nuestro catálogo.</p>
-                <div class="d-flex gap-4 mt-4 text-center">
-                    <div><h3 class="fw-bold accent-color mb-0">4K</h3><small>NATIVO</small></div>
-                    <div><h3 class="fw-bold accent-color mb-0">0ms</h3><small>DELAY</small></div>
-                    <div><h3 class="fw-bold accent-color mb-0">∞</h3><small>PODER</small></div>
+<section class="py-5 bg-dark">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="card bg-black border-0 rounded-5 overflow-hidden shadow-glow">
+                    <img src="teclado con ia 2.jpg" class="card-img-top opacity-75" alt="Detalle RGB">
+                    <div class="card-body p-4 text-white text-center">
+                        <h3 class="fw-bold">ILUMINACIÓN RGB REACTIVA</h3>
+                        <p class="text-secondary small">Millones de colores que responden a cada uno de tus movimientos.</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1200" class="feature-img shadow-lg" alt="Setup">
-            </div>
-        </div>
-    </section>
-
-    <section id="store" class="section-padding bg-dark shadow-inset">
-        <div class="container text-center mb-5">
-            <h2 class="display-4 fw-black mb-3" data-aos="fade-up">ARMAMENTO ELITE</h2>
-            <p class="text-secondary fs-5" data-aos="fade-up">Stock real para gamers de verdad.</p>
-        </div>
-        <div class="container">
-            <div class="row g-4" id="pGrid"></div>
-        </div>
-    </section>
-
-    <div class="offcanvas offcanvas-end bg-dark text-white shadow-lg" id="cart">
-        <div class="offcanvas-header border-bottom border-secondary py-4">
-            <h5 class="fw-bold m-0">TU ARSENAL</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column">
-            <div id="cItems"></div>
-            <div class="mt-auto pt-4 border-top">
-                <div class="d-flex justify-content-between fs-3 fw-bold mb-4">
-                    <span>Total</span>
-                    <span id="cTotal">S/ 0</span>
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="card bg-black border-0 rounded-5 overflow-hidden shadow-glow">
+                    <img src="teclado con ia.jpg" class="card-img-top opacity-75" alt="Diseño TKL">
+                    <div class="card-body p-4 text-white text-center">
+                        <h3 class="fw-bold">FORMATO TKL COMPACTO</h3>
+                        <p class="text-secondary small">Más espacio para tu mouse, más precisión en tus disparos.</p>
+                    </div>
                 </div>
-                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow" onclick="sendWsp()">COMPRAR POR WHATSAPP</button>
             </div>
         </div>
     </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-
-        const prods = [
-            { id: 1, name: "NVIDIA RTX 4090", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
-            { id: 2, name: "Teclado Mecánico RGB", price: 420, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=400" },
-            { id: 3, name: "Mouse Gaming Pro", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
-            { id: 4, name: "Monitor 240Hz OLED", price: 3100, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
-        ];
-
-        let myCart = [];
-
-        function render() {
-            document.getElementById('pGrid').innerHTML = prods.map(p => `
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in">
-                    <div class="product-card text-center" onclick="add(${p.id})">
-                        <div class="img-box"><img src="${p.img}" class="img-fluid"></div>
-                        <h4 class="fw-bold mb-1">${p.name}</h4>
-                        <p class="accent-color fs-4 fw-bold">S/ ${p.price}</p>
-                        <button class="btn btn-outline-light w-100 rounded-pill">Añadir al Carrito</button>
-                    </div>
+<section id="comprar" class="py-5 text-center bg-black">
+    <div class="container py-5">
+        <h2 class="display-3 fw-black text-white mb-5" data-aos="fade-down">¿VAS A SEGUIR JUGANDO <br><span class="text-primary">COMO UN NOOB?</span></h2>
+        
+        <div class="row g-4 justify-content-center mb-5">
+            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                <div class="p-3 border border-secondary rounded-4">
+                    <h5 class="text-white mb-0">SWITCHES ROJOS</h5>
+                    <small class="text-muted">Velocidad pura</small>
                 </div>
-            `).join('');
-        }
-
-        function add(id) {
-            myCart.push(prods.find(x => x.id === id));
-            update();
-            const badge = document.getElementById('cCount');
-            badge.style.transform = 'scale(1.5)';
-            setTimeout(() => badge.style.transform = 'scale(1)', 200);
-        }
-
-        function update() {
-            document.getElementById('cCount').innerText = myCart.length;
-            document.getElementById('cItems').innerHTML = myCart.map((p, i) => `
-                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-secondary bg-opacity-25 rounded-4">
-                    <div class="small fw-bold">${p.name}</div>
-                    <div>
-                        <span class="me-2">S/ ${p.price}</span>
-                        <button class="btn btn-sm btn-outline-danger" onclick="myCart.splice(${i},1);update()">×</button>
-                    </div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                <div class="p-3 border border-secondary rounded-4">
+                    <h5 class="text-white mb-0">OLED SMART</h5>
+                    <small class="text-muted">Pantalla integrada</small>
                 </div>
-            `).join('');
-            document.getElementById('cTotal').innerText = `S/ ${myCart.reduce((s, p) => s + p.price, 0)}`;
-        }
+            </div>
+            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                <div class="p-3 border border-secondary rounded-4">
+                    <h5 class="text-white mb-0">STOCK EN HUACHO</h5>
+                    <small class="text-muted">Entrega hoy mismo</small>
+                </div>
+            </div>
+        </div>
 
-        function sendWsp() {
-            if(myCart.length === 0) return alert("Tu arsenal está vacío");
-            let msg = "¡Hola ELMAQUI TECH! 🚀 Vengo de la web y quiero estos productos:%0A";
-            myCart.forEach(p => msg += `• ${p.name} (S/ ${p.price})%0A`);
-            msg += `%0A*TOTAL: ${document.getElementById('cTotal').innerText}*`;
-            window.open(`https://wa.me/51933589431?text=${msg}`);
-        }
+        <div class="p-5 bg-primary rounded-5 d-inline-block shadow-lg" data-aos="pulse">
+            <h3 class="text-white fw-bold">ÚLTIMAS 5 UNIDADES DISPONIBLES</h3>
+            <p class="mb-4">No esperes a que llegue de Lima, recógelo ya.</p>
+            <a href="https://wa.me/51933589431?text=Quiero%20el%20SteelSeries%20de%2079%20soles%20AHORA" class="btn btn-white btn-lg rounded-pill px-5 fw-black text-primary">
+                PEDIR POR WHATSAPP (S/ 79)
+            </a>
+        </div>
+    </div>
+</section>
 
-        render();
-    </script>
-</body>
-</html>
+<style>
+    body { background-color: #000; font-family: 'Inter', sans-serif; }
+    .fw-black { font-weight: 900; }
+    .text-primary { color: #007bff !important; }
+    .bg-primary { background-color: #007bff !important; }
+    .shadow-glow { box-shadow: 0 0 30px rgba(0, 123, 255, 0.2); }
+    .btn-white { background: #fff; color: #000; border: none; }
+    .btn-white:hover { background: #eee; transform: translateY(-3px); }
+    
+    /* Animación de pulso para el botón final */
+    [data-aos="pulse"] {
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+</style>
