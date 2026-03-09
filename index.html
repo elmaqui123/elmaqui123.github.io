@@ -3,240 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELMAQUI TECH | Experiencia Inmersiva</title>
+    <title>ELMAQUI TECH | Tienda Global</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        :root { --accent: #0071e3; --dark: #000; --glass: rgba(255, 255, 255, 0.8); }
-        body { font-family: 'Inter', sans-serif; background-color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+        :root { --accent: #00c8ff; --dark: #050505; }
+        body { background-color: var(--dark); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* Navbar con desenfoque */
-        .navbar { background: var(--glass); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(0,0,0,0.05); transition: 0.3s; }
-        .navbar-brand { font-weight: 800; letter-spacing: -1.5px; }
-
-        /* Hero con efecto de profundidad */
+        /* Hero Gigante */
         .hero { 
-            height: 100vh; 
-            position: relative;
-            overflow: hidden;
-            display: flex; align-items: center; justify-content: center; color: white;
-        }
-        .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 120%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1547119957-637f8679db1e?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover; background-position: center;
-            z-index: -1;
-            transform: translateY(0);
-            transition: transform 0.1s ease-out;
-        }
-        .hero-text h1 { font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 900; letter-spacing: -4px; line-height: 0.9; }
-
-        /* Tarjetas de Relleno Estilo OPPO */
-        .feature-card {
-            border-radius: 40px; overflow: hidden; position: relative;
-            height: 600px; background: #000; margin-bottom: 30px;
-        }
-        .feature-card img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            opacity: 0.7; transition: 1s cubic-bezier(0.19, 1, 0.22, 1); 
-        }
-        .feature-card:hover img { transform: scale(1.1); opacity: 0.5; }
-        .feature-content { 
-            position: absolute; bottom: 50px; left: 50px; color: white; z-index: 2;
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000');
+            background-size: cover; background-attachment: fixed;
         }
 
-        /* Store Section */
-        .product-card { 
-            border: none; border-radius: 30px; background: #f5f5f7; padding: 40px; 
-            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Tarjetas Estilo Gamer */
+        .card-gamer {
+            background: #111; border: 1px solid #222; border-radius: 20px;
+            padding: 25px; transition: 0.4s; position: relative; overflow: hidden;
         }
-        .product-card:hover { transform: translateY(-20px) scale(1.02); background: #fff; box-shadow: 0 40px 80px rgba(0,0,0,0.08); }
-        .img-container { height: 250px; display: flex; align-items: center; justify-content: center; transition: 0.5s; }
-        .product-card:hover .img-container { transform: scale(1.1); }
-        .img-container img { max-height: 100%; object-fit: contain; }
-
-        /* Botón animado */
-        .btn-apple { background: var(--accent); color: white; border-radius: 50px; padding: 12px 30px; font-weight: 600; border: none; transition: 0.3s; }
-        .btn-apple:hover { background: #0077ed; transform: scale(1.05); }
-
-        /* Animación Carrito */
-        @keyframes cartJump {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.4); }
-            100% { transform: scale(1); }
+        .card-gamer:hover {
+            border-color: var(--accent); transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
         }
-        .cart-animate { animation: cartJump 0.4s ease; }
+        .img-prod { height: 200px; object-fit: contain; width: 100%; filter: drop-shadow(0 0 10px rgba(255,255,255,0.1)); }
 
-        .cart-badge { background: var(--accent); color: white; border-radius: 50px; padding: 2px 8px; font-size: 11px; position: absolute; top: -5px; right: -5px; }
+        /* Botón WhatsApp Flotante */
+        .btn-wsp {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366;
+            width: 60px; height: 60px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 30px;
+            color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 1000;
+            text-decoration: none; transition: 0.3s;
+        }
+        .btn-wsp:hover { transform: scale(1.1); color: white; }
+
+        .cart-badge { background: var(--accent); position: absolute; top: -5px; right: -5px; padding: 2px 8px; border-radius: 50px; font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar sticky-top">
-        <div class="container d-flex justify-content-between">
-            <a class="navbar-brand text-dark" href="#">ELMAQUI TECH</a>
-            <div class="d-flex align-items-center gap-3">
-                <input type="text" id="searchInput" class="form-control form-control-sm rounded-pill border-0 bg-light px-3" placeholder="Buscar tecnología..." onkeyup="filterProducts()">
-                <button class="btn position-relative" id="cartBtn" data-bs-toggle="offcanvas" data-bs-target="#cart">
-                    <i class="fa fa-shopping-bag fs-5"></i>
-                    <span id="cartCount" class="cart-badge">0</span>
-                </button>
-            </div>
+    <a href="https://wa.me/51999999999?text=Hola%20ElMaqui,%20quiero%20comprar%20hardware" class="btn-wsp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav class="navbar navbar-dark bg-dark sticky-top border-bottom border-secondary">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-2" href="#">ELMAQUI <span style="color:var(--accent)">TECH</span></a>
+            <button class="btn btn-outline-info position-relative" data-bs-toggle="offcanvas" data-bs-target="#cart">
+                <i class="fa fa-shopping-cart"></i>
+                <span id="cartCount" class="cart-badge">0</span>
+            </button>
         </div>
     </nav>
 
     <section class="hero text-center">
-        <div class="hero-bg" id="parallaxBg"></div>
-        <div class="hero-text" data-aos="fade-up" data-aos-duration="1500">
-            <h1>EL FUTURO<br>ES AHORA.</h1>
-            <p class="fs-4 fw-light opacity-75">Siente el poder de la ingeniería de vanguardia.</p>
-            <a href="#store" class="btn btn-apple mt-4">Comenzar viaje</a>
+        <div data-aos="zoom-in">
+            <h1 class="display-1 fw-bold">DOMINA EL JUEGO</h1>
+            <p class="fs-4 text-info">Todo el hardware que tu setup necesita</p>
+            <a href="#productos" class="btn btn-info rounded-pill px-5 py-3 mt-4 fw-bold">VER CATÁLOGO</a>
         </div>
     </section>
 
-    <section class="container my-5 pt-5">
-        <div class="row">
-            <div class="col-md-12" data-aos="fade-up">
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1500&auto=format&fit=crop" alt="Display">
-                    <div class="feature-content">
-                        <span class="text-uppercase tracking-widest small">Visuales Next-Gen</span>
-                        <h2 class="display-3 fw-bold">Pantallas que cobran vida.</h2>
-                        <p class="fs-5 opacity-75">Resolución 8K con una tasa de refresco que desafía la realidad.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="feature-card" style="height: 500px;">
-                    <img src="https://images.unsplash.com/photo-1624701928517-44c8ac49d93c?q=80&w=1000" alt="GPU">
-                    <div class="feature-content">
-                        <h3 class="fw-bold">Poder Crudo.</h3>
-                        <p>Arquitectura RTX de última generación.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
-                <div class="feature-card" style="height: 500px;">
-                    <img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=1000" alt="Teclado">
-                    <div class="feature-content">
-                        <h3 class="fw-bold">Precisión Táctica.</h3>
-                        <p>Switches mecánicos ultra-rápidos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="container py-5" id="productos">
+        <div class="row g-4" id="grid"></div>
+    </div>
 
-    <section id="store" class="container my-5 py-5">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="display-4 fw-bold">Nuestra Selección</h2>
-            <p class="text-secondary">Hardware curado para los más exigentes.</p>
+    <div class="offcanvas offcanvas-end bg-dark text-white" id="cart">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="fw-bold">LISTA DE COMPRA</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
-        <div class="row g-4" id="productGrid">
-            </div>
-    </section>
-
-    <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="cart">
-        <div class="offcanvas-header bg-light py-4">
-            <h4 class="fw-bold m-0">TU BOLSA</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body d-flex flex-column">
             <div id="cartItems"></div>
-            <div class="border-top pt-4 mt-4">
-                <div class="d-flex justify-content-between fs-4 fw-bold">
-                    <span>Total:</span>
-                    <span id="cartTotal">S/ 0.00</span>
-                </div>
-                <button class="btn btn-apple w-100 py-3 mt-4" onclick="checkout()">FINALIZAR COMPRA</button>
+            <div class="mt-auto">
+                <hr>
+                <h3 class="d-flex justify-content-between">Total: <span>S/ <span id="total">0</span></span></h3>
+                <button class="btn btn-info w-100 py-3 mt-3 fw-bold" onclick="enviarWhatsApp()">PEDIR POR WHATSAPP</button>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: false });
-
-        // Efecto Parallax Simple para el Hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const background = document.getElementById('parallaxBg');
-            background.style.transform = `translateY(${scrolled * 0.5}px)`;
-        });
-
+        AOS.init();
+        
         const products = [
             { id: 1, name: "NVIDIA RTX 4090", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
-            { id: 2, name: "Teclado G-Pro X", price: 420, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=400" },
-            { id: 3, name: "Mouse Ultralight", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
-            { id: 4, name: "Monitor 240Hz OLED", price: 3200, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
+            { id: 2, name: "Teclado RGB Mecánico", price: 420, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=400" },
+            { id: 3, name: "Mouse Gamer Pro", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
+            { id: 4, name: "Monitor 240Hz OLED", price: 3400, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
         ];
 
         let cart = [];
 
-        function renderProducts(list) {
-            document.getElementById('productGrid').innerHTML = list.map(p => `
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in-up">
-                    <div class="product-card">
-                        <div class="img-container">
-                            <img src="${p.img}" alt="${p.name}">
-                        </div>
+        function render() {
+            document.getElementById('grid').innerHTML = products.map(p => `
+                <div class="col-md-6 col-lg-3" data-aos="fade-up">
+                    <div class="card-gamer text-center">
+                        <img src="${p.img}" class="img-prod mb-3">
                         <h5 class="fw-bold">${p.name}</h5>
-                        <p class="text-secondary mb-4">S/ ${p.price}</p>
-                        <button class="btn-apple w-100" onclick="addToCart(${p.id})">Añadir</button>
+                        <p class="text-info fs-4">S/ ${p.price}</p>
+                        <button class="btn btn-outline-info w-100 rounded-pill" onclick="add(${p.id})">Añadir</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        function addToCart(id) {
-            const p = products.find(x => x.id === id);
-            cart.push(p);
-            updateUI();
-            
-            // Animación del botón del carrito
-            const btn = document.getElementById('cartBtn');
-            btn.classList.add('cart-animate');
-            setTimeout(() => btn.classList.remove('cart-animate'), 400);
+        function add(id) {
+            cart.push(products.find(p => p.id === id));
+            update();
         }
 
-        function updateUI() {
+        function update() {
             document.getElementById('cartCount').innerText = cart.length;
-            const container = document.getElementById('cartItems');
-            container.innerHTML = cart.map((p, i) => `
-                <div class="d-flex justify-content-between align-items-center mb-4 p-2 bg-light rounded-4">
-                    <img src="${p.img}" style="width:50px; border-radius:10px">
-                    <div class="ms-3 flex-grow-1">
-                        <p class="m-0 fw-bold small">${p.name}</p>
-                        <small class="text-primary">S/ ${p.price}</small>
+            document.getElementById('cartItems').innerHTML = cart.map((p, i) => `
+                <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-secondary bg-opacity-25 rounded">
+                    <span>${p.name}</span>
+                    <div>
+                        <span class="me-2">S/ ${p.price}</span>
+                        <button class="btn btn-sm btn-danger" onclick="cart.splice(${i},1);update()">X</button>
                     </div>
-                    <button class="btn btn-sm text-danger" onclick="removeFromCart(${i})">×</button>
                 </div>
             `).join('');
-            const total = cart.reduce((sum, p) => sum + p.price, 0);
-            document.getElementById('cartTotal').innerText = `S/ ${total.toFixed(2)}`;
+            document.getElementById('total').innerText = cart.reduce((s, p) => s + p.price, 0);
         }
 
-        function removeFromCart(i) {
-            cart.splice(i, 1);
-            updateUI();
+        function enviarWhatsApp() {
+            if(cart.length === 0) return alert("El carrito está vacío");
+            let msg = "Hola ELMAQUI, quiero estos productos:%0A";
+            cart.forEach(p => msg += `- ${p.name} (S/ ${p.price})%0A`);
+            msg += `%0ATotal: S/ ${document.getElementById('total').innerText}`;
+            window.open(`https://wa.me/51999999999?text=${msg}`);
         }
 
-        function filterProducts() {
-            const val = document.getElementById('searchInput').value.toLowerCase();
-            renderProducts(products.filter(p => p.name.toLowerCase().includes(val)));
-        }
-
-        function checkout() {
-            if(cart.length === 0) return alert("Tu bolsa está vacía");
-            alert("¡Procesando tu pedido tecnológico!");
-        }
-
-        renderProducts(products);
+        render();
     </script>
 </body>
 </html>
