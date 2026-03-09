@@ -3,313 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELMAQUI TECH | Tu Tienda de Tecnología Premium</title>
+    <title>ELMAQUI TECH | Tienda Profesional</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; overflow-x: hidden; }
+        :root { --primary: #000; --accent: #2b6cb0; --bg-light: #f9fafb; }
+        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #1a1a1a; }
         
-        /* Paleta de colores */
-        :root {
-            --shopify-black: #1a1a1a;
-            --shopify-grey: #f6f6f6;
-            --shopify-accent: #007bff; /* Un azul tech limpio */
-            --shopify-border: #e8e8e8;
-        }
+        /* Navbar y Buscador */
+        .announcement-bar { background: var(--primary); color: white; text-align: center; padding: 8px; font-size: 13px; }
+        .navbar { border-bottom: 1px solid #eee; padding: 15px 0; background: white; }
+        .search-container { position: relative; width: 300px; }
+        .search-input { border-radius: 20px; padding-left: 35px; border: 1px solid #ddd; }
+        .search-icon { position: absolute; left: 12px; top: 10px; color: #888; }
 
-        /* Barra de anuncio superior */
-        .announcement-bar { background-color: var(--shopify-black); color: white; text-align: center; padding: 10px; font-size: 13px; font-weight: 500; }
+        /* Hero */
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=2000&auto=format&fit=crop'); 
+                height: 60vh; background-size: cover; background-position: center; display: flex; align-items: center; color: white; }
 
-        /* Navbar Limpia y Sticky */
-        .navbar { background: white; border-bottom: 1px solid var(--shopify-border); padding: 15px 0; transition: 0.3s; }
-        .navbar.scrolled { padding: 10px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .navbar-brand { font-weight: 700; letter-spacing: -1px; font-size: 26px; color: #000 !important; }
-        .nav-link { color: #1a1a1a !important; font-weight: 500; font-size: 15px; margin: 0 12px; text-transform: uppercase; letter-spacing: 1px; }
-        .nav-link:hover { color: var(--shopify-accent) !important; }
-
-        /* Iconos de Navbar */
-        .nav-icon { color: #1a1a1a; font-size: 20px; text-decoration: none; margin-left: 20px; position: relative; }
-        .cart-badge { position: absolute; top: -10px; right: -10px; background: var(--shopify-black); color: white; font-size: 11px; padding: 3px 7px; border-radius: 50%; }
-
-        /* Hero section con imagen espectacular */
-        .hero-section { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
-                                    url('https://images.unsplash.com/photo-1593305841991-05c297ba326b?q=80&w=2070&auto=format&fit=crop'); 
-                         background-size: cover; background-position: center; height: 85vh; display: flex; align-items: center; color: white; }
-        .hero-content { max-width: 650px; padding-left: 5%; }
-        .btn-shopify { background: #000; color: white; padding: 15px 40px; border-radius: 0; font-weight: 600; text-transform: uppercase; border: none; transition: 0.3s; letter-spacing: 1px; }
-        .btn-shopify:hover { background: #333; transform: translateY(-2px); }
-
-        /* Sección de Categorías Destacadas */
-        .category-card { border: none; position: relative; overflow: hidden; border-radius: 0; cursor: pointer; }
-        .category-card img { transition: 0.5s; width: 100%; height: 300px; object-fit: cover; }
-        .category-card:hover img { transform: scale(1.05); }
-        .category-text { position: absolute; bottom: 20px; left: 20px; color: white; z-index: 2; }
-        .category-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
-
-        /* Cards de Producto (Minimalista Pro) */
-        .product-card { border: none; margin-bottom: 40px; transition: 0.3s; background: white; padding: 10px; }
-        .product-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .product-image-wrapper { background: var(--shopify-grey); position: relative; overflow: hidden; height: 300px; display: flex; align-items: center; justify-content: center; }
-        .product-card img { transition: 0.5s; max-width: 80%; max-height: 80%; object-fit: contain; }
-        .product-card:hover img { transform: scale(1.08); }
+        /* Tarjetas de Producto */
+        .product-card { border: none; transition: 0.3s; height: 100%; background: #fff; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .img-wrapper { background: var(--bg-light); height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .img-wrapper img { max-width: 80%; max-height: 80%; object-fit: contain; transition: 0.4s; }
+        .product-card:hover img { transform: scale(1.1); }
         
-        /* Botón de "Añadir al carrito" que aparece al hacer hover */
-        .add-to-cart-btn { position: absolute; bottom: -50px; left: 0; width: 100%; background: rgba(0,0,0,0.8); color: white; padding: 12px; text-align: center; text-transform: uppercase; font-weight: 600; font-size: 12px; transition: 0.3s; cursor: pointer; opacity: 0; }
-        .product-card:hover .add-to-cart-btn { bottom: 0; opacity: 1; }
+        /* Carrito Lateral (Offcanvas) */
+        .cart-item { display: flex; align-items: center; border-bottom: 1px solid #eee; padding: 10px 0; }
+        .cart-item img { width: 50px; height: 50px; object-fit: contain; margin-right: 15px; }
+        .cart-count-badge { background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 10px; position: absolute; top: -5px; right: -10px; }
 
-        .product-title { font-size: 17px; font-weight: 600; margin-top: 15px; color: #1a1a1a; text-decoration: none; display: block; transition: 0.2s; }
-        .product-title:hover { color: var(--shopify-accent); }
-        .product-price { color: #666; font-size: 16px; margin-top: 5px; font-weight: 500; }
-        .badge-sale { position: absolute; top: 15px; left: 15px; background: #000; color: white; padding: 5px 12px; font-size: 11px; font-weight: 600; letter-spacing: 1px; }
-
-        /* Sección Newsletter */
-        .newsletter-section { background-color: var(--shopify-grey); padding: 80px 0; text-align: center; }
-        .newsletter-form { max-width: 500px; margin: 30px auto 0; display: flex; }
-        .newsletter-input { border-radius: 0; border: 1px solid #ccc; padding: 12px; flex-grow: 1; }
-        .newsletter-btn { background: #000; color: white; border-radius: 0; border: none; padding: 0 25px; text-transform: uppercase; font-weight: 600; }
-
-        /* Footer Completo */
-        footer { background: var(--shopify-black); color: #ccc; padding: 60px 0 30px; font-size: 14px; }
-        footer a { color: #ccc; text-decoration: none; transition: 0.2s; }
-        footer a:hover { color: white; }
-        .footer-title { color: white; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; font-size: 15px; }
-        .social-icons a { font-size: 18px; margin-right: 15px; }
-
+        .btn-black { background: black; color: white; border-radius: 0; padding: 10px 20px; border: none; text-transform: uppercase; font-weight: 600; }
+        .btn-black:hover { background: #333; }
     </style>
 </head>
 <body>
 
-    <div class="announcement-bar">
-        ENVÍO GRATIS A TODO EL PERÚ POR COMPRAS MAYORES A S/ 199 🇵🇪
-    </div>
+    <div class="announcement-bar">✈️ ENVÍO GRATIS A TODO EL PERÚ POR LANZAMIENTO</div>
 
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">ELMAQUI TECH</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">INICIO</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">COMPONENTES</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">MONITORES</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">LAPTOPS</a></li>
-                </ul>
+    <nav class="navbar sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand fw-bold fs-3" href="#">ELMAQUI TECH</a>
+            
+            <div class="search-container d-none d-md-block">
+                <i class="fa fa-search search-icon"></i>
+                <input type="text" id="searchInput" class="form-control search-input" placeholder="Buscar productos..." onkeyup="filterProducts()">
             </div>
+
             <div class="d-flex align-items-center">
-                <a href="#" class="nav-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></a>
-                <a href="#" class="nav-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg></a>
-                <a href="#" class="nav-icon position-relative" id="cart-icon">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                    <span class="cart-badge" id="cart-count">0</span>
-                </a>
+                <button class="btn position-relative me-3" data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
+                    <i class="fa fa-shopping-cart fs-4"></i>
+                    <span id="cartCount" class="cart-count-badge">0</span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <section class="hero-section">
-        <div class="hero-content">
-            <p class="text-uppercase fw-600 mb-2" style="letter-spacing: 2px;">Lo último en Setup Gaming</p>
-            <h1 class="display-3 fw-bold mb-4">TRANSFORMA TU EXPERIENCIA</h1>
-            <p class="fs-5 mb-5 opacity-75">Descubre los componentes de alta gama que llevarán tu rendimiento al siguiente nivel. Potencia pura en tus manos.</p>
-            <button class="btn btn-shopify">Ver Novedades</button>
+    <header class="hero text-center text-md-start">
+        <div class="container">
+            <h1 class="display-3 fw-bold">EL PODER DE LA RTX 3090</h1>
+            <p class="fs-4">Arma tu setup con componentes de élite.</p>
+            <button class="btn btn-light btn-lg mt-3 fw-bold">VER OFERTAS</button>
         </div>
+    </header>
+
+    <section class="container my-5">
+        <h2 class="fw-bold mb-4">Productos Destacados</h2>
+        <div class="row g-4" id="productGrid">
+            </div>
     </section>
 
-    <div class="container my-5 pt-5">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card category-card">
-                    <img src="https://images.unsplash.com/photo-1591799264318-7e698ddb7c1d?q=80&w=600&auto=format&fit=crop" alt="Componentes">
-                    <div class="category-overlay"></div>
-                    <div class="category-text">
-                        <h4 class="fw-bold">COMPONENTES</h4>
-                        <p class="mb-0">Tarjetas de Video, Procesadores y más</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card category-card">
-                    <img src="https://images.unsplash.com/photo-1547119957-637f8679db1e?q=80&w=600&auto=format&fit=crop" alt="Monitores">
-                    <div class="category-overlay"></div>
-                    <div class="category-text">
-                        <h4 class="fw-bold">MONITORES</h4>
-                        <p class="mb-0">4K, Curvos, Alta Frecuencia</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card category-card">
-                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600&auto=format&fit=crop" alt="Laptops">
-                    <div class="category-overlay"></div>
-                    <div class="category-text">
-                        <h4 class="fw-bold">LAPTOPS</h4>
-                        <p class="mb-0">Gamer y Trabajo Profesional</p>
-                    </div>
-                </div>
-            </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="fw-bold">TU CARRITO</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
-    </div>
-
-    <div class="container mt-5 pt-5 pb-5">
-        <h2 class="text-center fw-bold mb-5" style="letter-spacing: -1px; font-size: 32px;">PRODUCTOS DESTACADOS</h2>
-        <div class="row row-cols-2 row-cols-md-4 g-4">
-            
-            <div class="col">
-                <div class="card product-card" onclick="openQuickView('GeForce RTX 3090 24GB VRAM', 'S/ 5,499.00', 'https://m.media-amazon.com/images/I/71uK-V3M-qL._AC_SL1500_.jpg')">
-                    <div class="product-image-wrapper">
-                        <span class="badge-sale">OFERTA</span>
-                        <img src="https://m.media-amazon.com/images/I/71uK-V3M-qL._AC_SL1500_.jpg" alt="RTX 3090">
-                        <div class="add-to-cart-btn">Vista Rápida</div>
-                    </div>
-                    <a href="#" class="product-title">GeForce RTX 3090 24GB VRAM</a>
-                    <p class="product-price">S/ 5,499.00 <del class="text-muted ms-2">S/ 6,200.00</del></p>
-                </div>
+        <div class="offcanvas-body">
+            <div id="cartItemsContainer">
+                <p class="text-center text-muted mt-5">Tu carrito está vacío.</p>
             </div>
-
-            <div class="col">
-                <div class="card product-card" onclick="openQuickView('Teclado Mecánico RGB Pro (Blanco)', 'S/ 320.00', 'https://m.media-amazon.com/images/I/61S9A6X+X7L._AC_SL1500_.jpg')">
-                    <div class="product-image-wrapper">
-                        <img src="https://m.media-amazon.com/images/I/61S9A6X+X7L._AC_SL1500_.jpg" alt="Teclado Mecánico">
-                        <div class="add-to-cart-btn">Vista Rápida</div>
-                    </div>
-                    <a href="#" class="product-title">Teclado Mecánico RGB Pro (Blanco)</a>
-                    <p class="product-price">S/ 320.00</p>
+            <div class="mt-4 border-top pt-3">
+                <div class="d-flex justify-content-between fw-bold fs-5">
+                    <span>Total:</span>
+                    <span id="cartTotal">S/ 0.00</span>
                 </div>
-            </div>
-
-            <div class="col">
-                <div class="card product-card" onclick="openQuickView('Mouse Ultra Light Gamer Wireless', 'S/ 180.00', 'https://m.media-amazon.com/images/I/71YyOat6OAL._AC_SL1500_.jpg')">
-                    <div class="product-image-wrapper">
-                        <img src="https://m.media-amazon.com/images/I/71YyOat6OAL._AC_SL1500_.jpg" alt="Mouse Gamer">
-                        <div class="add-to-cart-btn">Vista Rápida</div>
-                    </div>
-                    <a href="#" class="product-title">Mouse Ultra Light Gamer Wireless</a>
-                    <p class="product-price">S/ 180.00</p>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card product-card" onclick="openQuickView('Monitor 4K 144Hz IPS 27"', 'S/ 2,150.00', 'https://m.media-amazon.com/images/I/81shshV9S3L._AC_SL1500_.jpg')">
-                    <div class="product-image-wrapper">
-                        <img src="https://m.media-amazon.com/images/I/81shshV9S3L._AC_SL1500_.jpg" alt="Monitor 4K">
-                        <div class="add-to-cart-btn">Vista Rápida</div>
-                    </div>
-                    <a href="#" class="product-title">Monitor 4K 144Hz IPS 27"</a>
-                    <p class="product-price">S/ 2,150.00</p>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-    <div class="newsletter-section mt-5">
-        <div class="container">
-            <h3 class="fw-bold text-uppercase">Únete al Maqui Club</h3>
-            <p class="text-muted">Suscríbete para recibir ofertas exclusivas, novedades y guías de setup.</p>
-            <div class="newsletter-form">
-                <input type="email" class="newsletter-input form-control" placeholder="Tu correo electrónico">
-                <button class="newsletter-btn">Suscribirse</button>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <h5 class="footer-title">ELMAQUI TECH</h5>
-                    <p class="text-muted pe-4">Tu aliado confiable para construir el setup de tus sueños en Perú. Calidad premium garantizada.</p>
-                    <div class="social-icons mt-3">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <h5 class="footer-title">Enlaces</h5>
-                    <div class="footer-links">
-                        <a href="#">Inicio</a>
-                        <a href="#">Catálogo</a>
-                        <a href="#">Novedades</a>
-                        <a href="#">Contacto</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <h5 class="footer-title">Soporte</h5>
-                    <div class="footer-links">
-                        <a href="#">Preguntas Frecuentes</a>
-                        <a href="#">Políticas de Envío</a>
-                        <a href="#">Términos y Condiciones</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <h5 class="footer-title">Contacto</h5>
-                    <p class="text-muted">Lima, Perú<br>soporte@elmaqui.pe<br>WhatsApp: +51 999 888 777</p>
-                </div>
-            </div>
-            <div class="copyright text-center mt-5">
-                &copy; 2023 ELMAQUI TECH. Todos los derechos reservados.
-            </div>
-        </div>
-    </footer>
-
-    <div class="modal fade" id="quickViewModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content" style="border-radius: 0;">
-                <div class="modal-body p-0">
-                    <div class="row g-0">
-                        <div class="col-md-6" style="background: #f6f6f6; padding: 40px;">
-                            <img id="modalProductImage" src="" class="img-fluid" alt="Producto">
-                        </div>
-                        <div class="col-md-6 p-5">
-                            <h3 id="modalProductTitle" class="fw-bold mb-3"></h3>
-                            <p id="modalProductPrice" class="fs-4 fw-600 mb-4" style="color: var(--shopify-accent);"></p>
-                            <p class="text-muted mb-4">Stock disponible para envío inmediato a todo el Perú. Garantía oficial de la marca.</p>
-                            <button class="btn btn-shopify w-100 mb-3" onclick="addToCart()">Añadir al Carrito</button>
-                            <a href="#" class="text-muted text-decoration-underline fs-7">Ver detalles completos</a>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
-                </div>
+                <button class="btn btn-black w-100 mt-3" onclick="checkout()">FINALIZAR COMPRA</button>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+    
     <script>
-        // Efecto de scroll en la navbar
-        window.addEventListener('scroll', function() {
-            var nav = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
+        // BASE DE DATOS DE PRODUCTOS
+        const products = [
+            { id: 1, name: "NVIDIA RTX 3090 24GB", price: 5499, img: "https://m.media-amazon.com/images/I/71uK-V3M-qL._AC_SL1500_.jpg", cat: "GPU" },
+            { id: 2, name: "Teclado Mecánico RGB Blanco", price: 320, img: "https://m.media-amazon.com/images/I/61S9A6X+X7L._AC_SL1500_.jpg", cat: "Perifericos" },
+            { id: 3, name: "Mouse Gamer Pro Wireless", price: 180, img: "https://m.media-amazon.com/images/I/71YyOat6OAL._AC_SL1500_.jpg", cat: "Perifericos" },
+            { id: 4, name: "Monitor 4K 144Hz Gamer", price: 2150, img: "https://m.media-amazon.com/images/I/81shshV9S3L._AC_SL1500_.jpg", cat: "Monitores" },
+            { id: 5, name: "Procesador Intel i9-13900K", price: 2400, img: "https://m.media-amazon.com/images/I/61bL89NXunL._AC_SL1500_.jpg", cat: "CPU" }
+        ];
+
+        let cart = [];
+
+        // 1. MOSTRAR PRODUCTOS
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = items.map(p => `
+                <div class="col-md-4 col-lg-3">
+                    <div class="card product-card">
+                        <div class="img-wrapper">
+                            <img src="${p.img}" alt="${p.name}">
+                        </div>
+                        <div class="card-body text-center">
+                            <h6 class="fw-bold">${p.name}</h6>
+                            <p class="text-primary fw-bold">S/ ${p.price.toFixed(2)}</p>
+                            <button class="btn btn-black btn-sm w-100" onclick="addToCart(${p.id})">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 2. BUSCADOR FUNCIONAL
+        function filterProducts() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(term));
+            renderProducts(filtered);
+        }
+
+        // 3. CARRITO FUNCIONAL
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const totalEl = document.getElementById('cartTotal');
+            const countEl = document.getElementById('cartCount');
+            
+            countEl.innerText = cart.length;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="text-center text-muted mt-5">Tu carrito está vacío.</p>';
+                totalEl.innerText = "S/ 0.00";
+                return;
             }
-        });
 
-        // Funciones para la Vista Rápida Modal
-        var myModal = new Bootstrap.Modal(document.getElementById('quickViewModal'));
+            container.innerHTML = cart.map((p, index) => `
+                <div class="cart-item">
+                    <img src="${p.img}">
+                    <div class="flex-grow-1">
+                        <small class="d-block fw-bold">${p.name}</small>
+                        <small>S/ ${p.price.toFixed(2)}</small>
+                    </div>
+                    <button class="btn btn-sm text-danger" onclick="removeFromCart(${index})"><i class="fa fa-trash"></i></button>
+                </div>
+            `).join('');
 
-        function openQuickView(title, price, image) {
-            document.getElementById('modalProductTitle').innerText = title;
-            document.getElementById('modalProductPrice').innerText = price;
-            document.getElementById('modalProductImage').src = image;
-            myModal.show();
+            const total = cart.reduce((sum, p) => sum + p.price, 0);
+            totalEl.innerText = `S/ ${total.toFixed(2)}`;
         }
 
-        // Función simulada para añadir al carrito
-        let cartCount = 0;
-        function addToCart() {
-            cartCount++;
-            document.getElementById('cart-count').innerText = cartCount;
-            myModal.hide(); // Cierra el modal al añadir
-            alert("¡Producto añadido al carrito!");
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
         }
+
+        function checkout() {
+            if(cart.length === 0) return alert("El carrito está vacío.");
+            alert("¡Gracias por tu compra! Redirigiendo a pasarela de pago (Simulado)");
+            cart = [];
+            updateCartUI();
+        }
+
+        // Inicializar
+        renderProducts(products);
     </script>
 </body>
 </html>
