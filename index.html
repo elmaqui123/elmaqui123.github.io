@@ -13,10 +13,11 @@
         :root { --main: #0071e3; --dark: #000; --card: #161617; }
         body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HERO - VIDEO DE FONDO */
+        /* HERO - VIDEO DE FONDO NÍTIDO */
         .hero { 
             position: relative;
             height: 100vh; 
+            width: 100%;
             display: flex; 
             align-items: center; 
             justify-content: center;
@@ -24,7 +25,6 @@
             background-color: #000;
         }
         
-        /* El video se ajusta a todo el ancho y alto */
         #bgVideo {
             position: absolute;
             top: 50%;
@@ -34,42 +34,31 @@
             min-height: 100%;
             width: auto;
             height: auto;
+            object-fit: cover; /* Mantiene la nitidez original del video */
             z-index: 1;
-            object-fit: cover;
         }
 
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Oscurece el video para que el texto resalte */
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Capa para que las letras resalten */
             z-index: 2;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-        }
-
+        .hero-content { position: relative; z-index: 3; text-align: center; }
         .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
 
-        /* SECCIONES */
+        /* SECCIONES Y TIENDA */
         .section-padding { padding: 100px 0; }
         .feature-img { border-radius: 40px; width: 100%; height: 500px; object-fit: cover; }
         .accent-color { color: var(--main); }
 
-        /* PRODUCTOS */
         .product-card {
             background: var(--card); border: 1px solid #333; border-radius: 30px;
             padding: 35px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            cursor: pointer;
         }
-        .product-card:hover { 
-            transform: scale(1.05); border-color: var(--main);
-            box-shadow: 0 30px 60px rgba(0, 113, 227, 0.2);
-        }
+        .product-card:hover { transform: scale(1.05); border-color: var(--main); box-shadow: 0 30px 60px rgba(0, 113, 227, 0.2); }
         .img-box { height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
         .img-box img { max-height: 100%; transition: 0.5s; }
 
@@ -80,7 +69,6 @@
             align-items: center; justify-content: center; font-size: 35px;
             color: white; z-index: 9999; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
-
         .cart-count { background: var(--main); color: white; border-radius: 50px; padding: 2px 8px; font-size: 12px; position: absolute; top: -5px; right: -5px; }
     </style>
 </head>
@@ -103,7 +91,6 @@
     <section class="hero">
         <video autoplay muted loop playsinline id="bgVideo">
             <source src="68dd4cb3-3662-4731-bdbf-c54a2c9c171b_watermark.mp4" type="video/mp4">
-            Tu navegador no soporta videos.
         </video>
         <div class="hero-overlay"></div>
 
@@ -159,14 +146,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
-
-        // FORZAR REPRODUCCIÓN DEL VIDEO
-        window.addEventListener('load', function() {
-            var video = document.getElementById('bgVideo');
-            video.play().catch(function(error) {
-                console.log("El autoplay fue bloqueado, intentando de nuevo...");
-            });
-        });
 
         const prods = [
             { id: 1, name: "SteelSeries Apex 7 TKL", price: 790, img: "teclado con ia 2.jpg" },
