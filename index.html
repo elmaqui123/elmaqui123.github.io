@@ -3,138 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELMAQUI TECH | Innovación Extrema</title>
+    <title>ELMAQUI TECH | Rendimiento Sin Precedentes</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        :root { --accent: #0071e3; --dark: #000; --text-gray: #86868b; }
-        body { background-color: #fff; font-family: 'SF Pro Display', -apple-system, sans-serif; overflow-x: hidden; }
+        :root { --main: #0071e3; --dark: #000; --card: #161617; }
+        body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HERO CINEMÁTICO */
+        /* HERO - EL GANCHO */
         .hero { 
-            height: 100vh; position: relative; overflow: hidden;
-            display: flex; align-items: center; justify-content: center; color: white;
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2000');
+            background-size: cover; background-position: center; background-attachment: fixed;
         }
-        .hero-video {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000');
-            background-size: cover; background-position: center; z-index: -1;
-            transform: scale(1.1); transition: 3s ease-out;
-        }
-        .hero.active .hero-video { transform: scale(1); }
+        .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
 
         /* STORYTELLING SECTIONS */
-        .story-block { padding: 120px 0; background: #fff; }
-        .gradient-text { 
-            background: linear-gradient(90deg, #0071e3, #2bd2ff); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-            font-weight: 800;
-        }
-        .big-text { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; font-weight: 800; letter-spacing: -3px; }
+        .section-padding { padding: 100px 0; }
+        .feature-img { border-radius: 40px; width: 100%; height: 500px; object-fit: cover; }
+        .accent-color { color: var(--main); }
 
-        /* TARJETAS DE PRODUCTO (EL GANCHO) */
-        .card-pro {
-            border-radius: 30px; background: #f5f5f7; border: none; padding: 40px;
-            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); height: 100%;
+        /* PRODUCTOS - EL CIERRE */
+        .product-card {
+            background: var(--card); border: 1px solid #333; border-radius: 30px;
+            padding: 35px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        .card-pro:hover { transform: translateY(-20px); background: #fff; box-shadow: 0 40px 80px rgba(0,0,0,0.1); }
-        .img-container { height: 280px; display: flex; align-items: center; justify-content: center; }
-        .img-container img { max-height: 100%; object-fit: contain; transition: 0.5s; }
-        .card-pro:hover img { transform: scale(1.1); }
+        .product-card:hover { 
+            transform: scale(1.05); border-color: var(--main);
+            box-shadow: 0 30px 60px rgba(0, 113, 227, 0.2);
+        }
+        .img-box { height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .img-box img { max-height: 100%; transition: 0.5s; }
+        .product-card:hover img { transform: rotate(-5deg) scale(1.1); }
 
         /* WHATSAPP FLOTANTE */
         .wsp-float {
             position: fixed; bottom: 30px; right: 30px; background: #25d366;
             width: 65px; height: 65px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 32px;
-            color: white; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3); z-index: 2000;
-            text-decoration: none; transition: 0.4s;
+            align-items: center; justify-content: center; font-size: 35px;
+            color: white; z-index: 9999; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
         }
-        .wsp-float:hover { transform: scale(1.1) rotate(10deg); color: white; }
+        .wsp-float:hover { transform: scale(1.1); color: white; }
 
-        /* CART BADGE */
-        .cart-dot { background: var(--accent); color: white; border-radius: 50px; padding: 2px 8px; font-size: 12px; position: absolute; top: -5px; right: -5px; }
+        .cart-count { background: var(--main); color: white; border-radius: 50px; padding: 2px 8px; font-size: 12px; position: absolute; top: -5px; right: -5px; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/51933589431?text=Hola%20ElMaqui,%20vi%20la%20página%20y%20quiero%20lo%20mejor%20del%20catálogo!" class="wsp-float" target="_blank">
+    <a href="https://wa.me/51933589431?text=Hola%20ELMAQUI%20TECH!%20Quiero%20llevar%20mi%20setup%20al%20siguiente%20nivel." class="wsp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <nav class="navbar sticky-top bg-white bg-opacity-75 backdrop-blur shadow-sm">
+    <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 backdrop-blur shadow">
         <div class="container py-2">
-            <a class="navbar-brand fw-black fs-3" href="#">ELMAQUI <span class="text-primary">TECH</span></a>
-            <button class="btn border-0 position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartSide">
-                <i class="fa-solid fa-bag-shopping fs-4"></i>
-                <span id="cartCount" class="cart-dot">0</span>
+            <a class="navbar-brand fw-black fs-2" href="#">ELMAQUI <span class="accent-color">TECH</span></a>
+            <button class="btn btn-link position-relative text-white p-0" data-bs-toggle="offcanvas" data-bs-target="#cart">
+                <i class="fa-solid fa-cart-shopping fs-4"></i>
+                <span id="cCount" class="cart-count">0</span>
             </button>
         </div>
     </nav>
 
-    <section class="hero" id="hero">
-        <div class="hero-video"></div>
-        <div class="text-center" data-aos="fade-up" data-aos-duration="1500">
-            <h1 class="big-text">EL PODER <br> TIENE NOMBRE.</h1>
-            <p class="fs-4 fw-light opacity-75">Configuraciones que rompen los límites de lo posible.</p>
-            <a href="#catalogo" class="btn btn-primary rounded-pill px-5 py-3 mt-4 fw-bold shadow-lg">Comenzar Experiencia</a>
+    <section class="hero text-center">
+        <div data-aos="zoom-out" data-aos-duration="1500">
+            <p class="text-uppercase fw-bold mb-0">Hardware Grado Profesional</p>
+            <h1 class="hero-title">ROMPE LAS<br>REGLAS.</h1>
+            <a href="#store" class="btn btn-primary rounded-pill px-5 py-3 mt-4 fw-bold shadow">EXPLORAR TIENDA</a>
         </div>
     </section>
 
-    <section class="story-block container">
+    <section class="section-padding container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6" data-aos="fade-right">
-                <span class="text-primary fw-bold text-uppercase small">Nuestra Filosofía</span>
-                <h2 class="big-text mt-3">No es solo <span class="gradient-text">Hardware.</span></h2>
-                <p class="fs-4 text-secondary">En ELMAQUI TECH entendemos que cada frame cuenta. Seleccionamos componentes que no solo corren juegos, sino que dominan mundos. Tu victoria empieza aquí.</p>
+                <h2 class="display-3 fw-bold mb-4">No vendemos piezas,<br><span class="accent-color">vendemos poder.</span></h2>
+                <p class="fs-5 text-secondary">En ELMAQUI TECH seleccionamos cada componente como si fuera para nuestra propia estación de combate. Si no es lo mejor, no está en nuestro catálogo.</p>
+                <div class="d-flex gap-4 mt-4 text-center">
+                    <div><h3 class="fw-bold accent-color mb-0">4K</h3><small>NATIVO</small></div>
+                    <div><h3 class="fw-bold accent-color mb-0">0ms</h3><small>DELAY</small></div>
+                    <div><h3 class="fw-bold accent-color mb-0">∞</h3><small>PODER</small></div>
+                </div>
             </div>
-            <div class="col-lg-6" data-aos="zoom-in">
-                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1200" class="img-fluid rounded-5 shadow-2xl" alt="Gaming Setup">
-            </div>
-        </div>
-    </section>
-
-    <section class="story-block" style="background: #000; color: white;">
-        <div class="container text-center">
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="display-3 fw-black text-primary">0.1ms</h3>
-                    <p class="text-secondary fw-bold">LATENCIA TOTAL</p>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="display-3 fw-black text-primary">8K</h3>
-                    <p class="text-secondary fw-bold">RESOLUCIÓN NATIVA</p>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="display-3 fw-black text-primary">100%</h3>
-                    <p class="text-secondary fw-bold">GARANTÍA TECH</p>
-                </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1200" class="feature-img shadow-lg" alt="Setup">
             </div>
         </div>
     </section>
 
-    <section id="catalogo" class="story-block container">
-        <h2 class="big-text text-center mb-5" data-aos="fade-down">Lo Mejor de <br> <span class="gradient-text">Nuestra Selección.</span></h2>
-        <div class="row g-4" id="gridProds"></div>
+    <section id="store" class="section-padding bg-dark shadow-inset">
+        <div class="container text-center mb-5">
+            <h2 class="display-4 fw-black mb-3" data-aos="fade-up">ARMAMENTO ELITE</h2>
+            <p class="text-secondary fs-5" data-aos="fade-up">Stock real para gamers de verdad.</p>
+        </div>
+        <div class="container">
+            <div class="row g-4" id="pGrid"></div>
+        </div>
     </section>
 
-    <div class="offcanvas offcanvas-end border-0 shadow-lg" tabindex="-1" id="cartSide">
-        <div class="offcanvas-header py-4">
-            <h5 class="fw-bold m-0">TU SELECCIÓN ELITE</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    <div class="offcanvas offcanvas-end bg-dark text-white shadow-lg" id="cart">
+        <div class="offcanvas-header border-bottom border-secondary py-4">
+            <h5 class="fw-bold m-0">TU ARSENAL</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body d-flex flex-column">
-            <div id="cartContent"></div>
+            <div id="cItems"></div>
             <div class="mt-auto pt-4 border-top">
-                <div class="d-flex justify-content-between mb-4">
-                    <span class="fs-4">Inversión:</span>
-                    <span class="fs-4 fw-black">S/ <span id="cartTotal">0</span></span>
+                <div class="d-flex justify-content-between fs-3 fw-bold mb-4">
+                    <span>Total</span>
+                    <span id="cTotal">S/ 0</span>
                 </div>
-                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold" onclick="pedirWhatsApp()">CERRAR PEDIDO POR WHATSAPP</button>
+                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow" onclick="sendWsp()">COMPRAR POR WHATSAPP</button>
             </div>
         </div>
     </div>
@@ -143,53 +125,56 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
-        window.onload = () => document.getElementById('hero').classList.add('active');
 
-        const products = [
-            { id: 1, name: "NVIDIA RTX 4090 Pro", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
-            { id: 2, name: "Teclado G-Pro X Switch", price: 420, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=400" },
-            { id: 3, name: "Mouse Ultralight Carbon", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
-            { id: 4, name: "Monitor 360Hz Gaming", price: 3100, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
+        const prods = [
+            { id: 1, name: "NVIDIA RTX 4090", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
+            { id: 2, name: "Teclado Mecánico RGB", price: 420, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=400" },
+            { id: 3, name: "Mouse Gaming Pro", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
+            { id: 4, name: "Monitor 240Hz OLED", price: 3100, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
         ];
 
-        let cart = [];
+        let myCart = [];
 
         function render() {
-            document.getElementById('gridProds').innerHTML = products.map(p => `
-                <div class="col-md-6 col-lg-3" data-aos="fade-up">
-                    <div class="card-pro">
-                        <div class="img-container"><img src="${p.img}" alt="${p.name}"></div>
-                        <h4 class="fw-bold mt-4 mb-2">${p.name}</h4>
-                        <p class="text-secondary small">Rendimiento Grado Militar</p>
-                        <p class="fs-4 fw-bold">S/ ${p.price}</p>
-                        <button class="btn btn-outline-primary w-100 rounded-pill py-2" onclick="add(${p.id})">Añadir Bolsa</button>
+            document.getElementById('pGrid').innerHTML = prods.map(p => `
+                <div class="col-md-6 col-lg-3" data-aos="zoom-in">
+                    <div class="product-card text-center" onclick="add(${p.id})">
+                        <div class="img-box"><img src="${p.img}" class="img-fluid"></div>
+                        <h4 class="fw-bold mb-1">${p.name}</h4>
+                        <p class="accent-color fs-4 fw-bold">S/ ${p.price}</p>
+                        <button class="btn btn-outline-light w-100 rounded-pill">Añadir al Carrito</button>
                     </div>
                 </div>
             `).join('');
         }
 
         function add(id) {
-            cart.push(products.find(x => x.id === id));
+            myCart.push(prods.find(x => x.id === id));
             update();
+            const badge = document.getElementById('cCount');
+            badge.style.transform = 'scale(1.5)';
+            setTimeout(() => badge.style.transform = 'scale(1)', 200);
         }
 
         function update() {
-            document.getElementById('cartCount').innerText = cart.length;
-            document.getElementById('cartContent').innerHTML = cart.map((p, i) => `
-                <div class="d-flex align-items-center mb-3 p-3 bg-light rounded-4">
-                    <img src="${p.img}" style="width:50px; border-radius:10px">
-                    <div class="ms-3 flex-grow-1"><p class="m-0 fw-bold small">${p.name}</p></div>
-                    <button class="btn btn-sm text-danger" onclick="cart.splice(${i},1);update()">×</button>
+            document.getElementById('cCount').innerText = myCart.length;
+            document.getElementById('cItems').innerHTML = myCart.map((p, i) => `
+                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-secondary bg-opacity-25 rounded-4">
+                    <div class="small fw-bold">${p.name}</div>
+                    <div>
+                        <span class="me-2">S/ ${p.price}</span>
+                        <button class="btn btn-sm btn-outline-danger" onclick="myCart.splice(${i},1);update()">×</button>
+                    </div>
                 </div>
             `).join('');
-            document.getElementById('cartTotal').innerText = cart.reduce((s, p) => s + p.price, 0);
+            document.getElementById('cTotal').innerText = `S/ ${myCart.reduce((s, p) => s + p.price, 0)}`;
         }
 
-        function pedirWhatsApp() {
-            if(cart.length === 0) return alert("Selecciona algo primero, ¡no te arrepentirás!");
-            let msg = "¡Hola ELMAQUI TECH! 🚀 Vengo de tu web y quiero comprar esto:%0A%0A";
-            cart.forEach(p => msg += `• ${p.name} (S/ ${p.price})%0A`);
-            msg += `%0A*Total: S/ ${document.getElementById('cartTotal').innerText}*%0A%0A¿Cómo coordinamos el envío?`;
+        function sendWsp() {
+            if(myCart.length === 0) return alert("Tu arsenal está vacío");
+            let msg = "¡Hola ELMAQUI TECH! 🚀 Vengo de la web y quiero estos productos:%0A";
+            myCart.forEach(p => msg += `• ${p.name} (S/ ${p.price})%0A`);
+            msg += `%0A*TOTAL: ${document.getElementById('cTotal').innerText}*`;
             window.open(`https://wa.me/51933589431?text=${msg}`);
         }
 
