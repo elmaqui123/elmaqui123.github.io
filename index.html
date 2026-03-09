@@ -13,54 +13,45 @@
         :root { --main: #0071e3; --dark: #000; --card: #161617; }
         body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HERO - VIDEO DE FONDO NÍTIDO */
+        /* HERO */
         .hero { 
-            position: relative;
-            height: 100vh; 
-            width: 100%;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            overflow: hidden;
-            background-color: #000;
+            position: relative; height: 100vh; width: 100%; display: flex; 
+            align-items: center; justify-content: center; overflow: hidden; background-color: #000;
         }
-        
         #bgVideo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%; 
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: cover; /* Mantiene la nitidez original del video */
-            z-index: 1;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            min-width: 100%; min-height: 100%; width: auto; height: auto; object-fit: cover; z-index: 1;
         }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Capa para que las letras resalten */
-            z-index: 2;
-        }
-
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 2; }
         .hero-content { position: relative; z-index: 3; text-align: center; }
         .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
 
-        /* SECCIONES Y TIENDA */
-        .section-padding { padding: 100px 0; }
+        /* SECCIONES */
+        .section-padding { padding: 80px 0; }
         .feature-img { border-radius: 40px; width: 100%; height: 500px; object-fit: cover; }
         .accent-color { color: var(--main); }
 
+        /* PRODUCTOS */
         .product-card {
             background: var(--card); border: 1px solid #333; border-radius: 30px;
-            padding: 35px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-            cursor: pointer;
+            padding: 30px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); cursor: pointer; height: 100%;
         }
-        .product-card:hover { transform: scale(1.05); border-color: var(--main); box-shadow: 0 30px 60px rgba(0, 113, 227, 0.2); }
-        .img-box { height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .product-card:hover { transform: scale(1.05); border-color: var(--main); box-shadow: 0 20px 40px rgba(0, 113, 227, 0.2); }
+        .img-box { height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
         .img-box img { max-height: 100%; transition: 0.5s; }
+
+        /* BUSCADOR */
+        .search-container { max-width: 500px; margin: 0 auto 40px; }
+        .search-input { 
+            background: #161617; border: 1px solid #333; color: white; border-radius: 50px; 
+            padding: 15px 25px; width: 100%; transition: 0.3s;
+        }
+        .search-input:focus { outline: none; border-color: var(--main); box-shadow: 0 0 15px rgba(0, 113, 227, 0.3); }
+
+        /* FOOTER */
+        footer { background: #080808; padding: 60px 0 20px; border-top: 1px solid #222; }
+        .footer-link { color: #888; text-decoration: none; transition: 0.3s; }
+        .footer-link:hover { color: var(--main); }
 
         /* WHATSAPP */
         .wsp-float {
@@ -74,9 +65,7 @@
 </head>
 <body>
 
-    <a href="https://wa.me/51933589431?text=Hola%20ELMAQUI%20TECH!" class="wsp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/51933589431" class="wsp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 backdrop-blur shadow">
         <div class="container py-2">
@@ -93,11 +82,10 @@
             <source src="68dd4cb3-3662-4731-bdbf-c54a2c9c171b_watermark.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
-
-        <div class="hero-content" data-aos="zoom-out" data-aos-duration="1500">
+        <div class="hero-content" data-aos="zoom-out">
             <p class="text-uppercase fw-bold mb-0">Hardware Grado Profesional</p>
             <h1 class="hero-title">ROMPE LAS<br>REGLAS.</h1>
-            <a href="#store" class="btn btn-primary rounded-pill px-5 py-3 mt-4 fw-bold shadow">EXPLORAR TIENDA</a>
+            <a href="#store" class="btn btn-primary rounded-pill px-5 py-3 mt-4 fw-bold">EXPLORAR TIENDA</a>
         </div>
     </section>
 
@@ -105,11 +93,11 @@
         <div class="row align-items-center g-5">
             <div class="col-lg-6" data-aos="fade-right">
                 <h2 class="display-3 fw-bold mb-4">No vendemos piezas,<br><span class="accent-color">vendemos poder.</span></h2>
-                <p class="fs-5 text-secondary">En ELMAQUI TECH seleccionamos cada componente como si fuera para nuestra propia estación de combate.</p>
+                <p class="fs-5 text-secondary">En ELMAQUI TECH seleccionamos cada componente para que tu setup sea imparable.</p>
                 <div class="d-flex gap-4 mt-4 text-center">
-                    <div><h3 class="fw-bold accent-color mb-0">4K</h3><small>NATIVO</small></div>
-                    <div><h3 class="fw-bold accent-color mb-0">0ms</h3><small>DELAY</small></div>
-                    <div><h3 class="fw-bold accent-color mb-0">∞</h3><small>PODER</small></div>
+                    <div><h3 class="fw-bold accent-color mb-0">8000Hz</h3><small>POLLING RATE</small></div>
+                    <div><h3 class="fw-bold accent-color mb-0">100%</h3><small>ANTI-GHOSTING</small></div>
+                    <div><h3 class="fw-bold accent-color mb-0">100M</h3><small>CLICKS VIDA</small></div>
                 </div>
             </div>
             <div class="col-lg-6" data-aos="fade-left">
@@ -119,11 +107,44 @@
     </section>
 
     <section id="store" class="section-padding bg-dark">
-        <div class="container text-center mb-5">
-            <h2 class="display-4 fw-black mb-3" data-aos="fade-up">ARMAMENTO ELITE</h2>
-            <div class="row g-4 mt-4" id="pGrid"></div>
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-black mb-3">ARMAMENTO ELITE</h2>
+                <div class="search-container mt-4">
+                    <input type="text" id="pSearch" class="search-input" placeholder="Buscar periféricos, gráficas..." onkeyup="filterProds()">
+                </div>
+            </div>
+            <div class="row g-4" id="pGrid"></div>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <h3 class="fw-bold mb-4">ELMAQUI <span class="accent-color">TECH</span></h3>
+                    <p class="text-secondary">La tienda definitiva para entusiastas del hardware y gamers de alto rendimiento en Perú.</p>
+                </div>
+                <div class="col-lg-4 text-lg-center">
+                    <h5 class="fw-bold mb-4">CONTACTO</h5>
+                    <p class="text-secondary mb-1"><i class="fas fa-phone me-2"></i> +51 933 589 431</p>
+                    <p class="text-secondary"><i class="fas fa-envelope me-2"></i> ventas@elmaquitech.com</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <h5 class="fw-bold mb-4">SÍGUENOS</h5>
+                    <div class="d-flex justify-content-lg-end gap-3">
+                        <a href="#" class="footer-link fs-4"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-link fs-4"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="footer-link fs-4"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center text-secondary pt-3">
+                <small>&copy; 2024 ELMAQUI TECH. Todos los derechos reservados. Diseñado para el combate.</small>
+            </div>
+        </div>
+    </footer>
 
     <div class="offcanvas offcanvas-end bg-dark text-white" id="cart">
         <div class="offcanvas-header border-bottom border-secondary">
@@ -132,12 +153,11 @@
         </div>
         <div class="offcanvas-body d-flex flex-column">
             <div id="cItems"></div>
-            <div class="mt-auto pt-4 border-top">
+            <div class="mt-auto pt-4 border-top text-center">
                 <div class="d-flex justify-content-between fs-3 fw-bold mb-4">
-                    <span>Total</span>
-                    <span id="cTotal">S/ 0</span>
+                    <span>Total</span><span id="cTotal">S/ 0</span>
                 </div>
-                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold" onclick="sendWsp()">COMPRAR POR WHATSAPP</button>
+                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold" onclick="sendWsp()">PEDIR POR WHATSAPP</button>
             </div>
         </div>
     </div>
@@ -148,7 +168,7 @@
         AOS.init();
 
         const prods = [
-            { id: 1, name: "SteelSeries Apex 7 TKL", price: 790, img: "teclado con ia 2.jpg" },
+            { id: 1, name: "SteelSeries Apex 7 TKL", price: 79, img: "teclado con ia 2.jpg" },
             { id: 2, name: "NVIDIA RTX 4090", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
             { id: 3, name: "Mouse Gaming Pro", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
             { id: 4, name: "Monitor 240Hz OLED", price: 3100, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
@@ -156,35 +176,38 @@
 
         let myCart = [];
 
-        function render() {
-            document.getElementById('pGrid').innerHTML = prods.map(p => `
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in">
+        function render(items = prods) {
+            document.getElementById('pGrid').innerHTML = items.map(p => `
+                <div class="col-md-6 col-lg-3">
                     <div class="product-card text-center" onclick="add(${p.id})">
                         <div class="img-box"><img src="${p.img}" class="img-fluid"></div>
                         <h4 class="fw-bold mb-1">${p.name}</h4>
                         <p class="accent-color fs-4 fw-bold">S/ ${p.price}</p>
-                        <button class="btn btn-outline-light w-100 rounded-pill">Añadir al Carrito</button>
+                        <button class="btn btn-outline-light w-100 rounded-pill">Añadir</button>
                     </div>
                 </div>
             `).join('');
         }
 
+        function filterProds() {
+            const val = document.getElementById('pSearch').value.toLowerCase();
+            const filtered = prods.filter(p => p.name.toLowerCase().includes(val));
+            render(filtered);
+        }
+
         function add(id) {
             myCart.push(prods.find(x => x.id === id));
             update();
-            const badge = document.getElementById('cCount');
-            badge.style.transform = 'scale(1.5)';
-            setTimeout(() => badge.style.transform = 'scale(1)', 200);
         }
 
         function update() {
             document.getElementById('cCount').innerText = myCart.length;
             document.getElementById('cItems').innerHTML = myCart.map((p, i) => `
-                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-secondary bg-opacity-25 rounded-4">
+                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-secondary bg-opacity-10 rounded-4">
                     <div class="small fw-bold">${p.name}</div>
                     <div>
                         <span class="me-2">S/ ${p.price}</span>
-                        <button class="btn btn-sm btn-outline-danger" onclick="myCart.splice(${i},1);update()">×</button>
+                        <button class="btn btn-sm btn-danger" onclick="myCart.splice(${i},1);update()">×</button>
                     </div>
                 </div>
             `).join('');
@@ -193,7 +216,7 @@
 
         function sendWsp() {
             if(myCart.length === 0) return alert("Tu arsenal está vacío");
-            let msg = "¡Hola ELMAQUI TECH! 🚀 Vengo de la web y quiero estos productos:%0A";
+            let msg = "¡Hola ELMAQUI TECH! Quiero estos productos:%0A";
             myCart.forEach(p => msg += `• ${p.name} (S/ ${p.price})%0A`);
             msg += `%0A*TOTAL: ${document.getElementById('cTotal').innerText}*`;
             window.open(`https://wa.me/51933589431?text=${msg}`);
