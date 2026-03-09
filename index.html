@@ -1,108 +1,129 @@
-<header class="vh-100 d-flex align-items-center justify-content-center text-center" 
-        style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('teclado con ia.jpg'); background-size: cover; background-position: center;">
-    <div class="container" data-aos="zoom-in">
-        <h1 class="display-1 fw-black text-white mb-3">STEELSERIES <span class="text-primary">APEX 7</span></h1>
-        <p class="fs-3 text-light opacity-75">El teclado mecánico que los profesionales no quieren que tengas.</p>
-        <div class="mt-5">
-            <span class="badge bg-danger fs-4 p-3 rounded-pill shadow-lg">OFERTA EXCLUSIVA EN HUACHO</span>
-            <h2 class="display-2 fw-bold text-white mt-3">S/ 79.00</h2>
-            <p class="text-decoration-line-through text-secondary fs-4">Precio Regular: S/ 450.00</p>
-        </div>
-        <a href="#comprar" class="btn btn-primary btn-lg px-5 py-3 mt-4 rounded-pill fw-bold shadow-glow">¡LO QUIERO AHORA!</a>
-    </div>
-</header>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELMAQUI TECH | SteelSeries Apex 7 TKL</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root { --main: #0071e3; --dark: #000; --card: #161617; --price: #ff3b30; }
+        body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-<section class="py-5 bg-black text-white overflow-hidden">
-    <div class="container text-center">
-        <h2 class="display-4 fw-black mb-5" data-aos="fade-up">
-            ROMPE LAS REGLAS <br>
-            <span class="fs-5 fw-light text-secondary">Domina el juego con tecnología de punta.</span>
-        </h2>
+        /* HERO - EL IMPACTO */
+        .hero { 
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), 
+                        url('teclado con ia.jpg'); /* TU IMAGEN DE IA */
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+        .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
+
+        /* VIDEO SECTION */
+        .video-box { 
+            max-width: 900px; margin: -150px auto 50px; position: relative; z-index: 10;
+            border-radius: 40px; overflow: hidden; border: 2px solid #333;
+            box-shadow: 0 0 50px rgba(0, 113, 227, 0.4);
+        }
+
+        /* PRODUCTO ÚNICO */
+        .product-card {
+            background: var(--card); border: 2px solid var(--main); border-radius: 40px;
+            padding: 50px; transition: 0.5s; position: relative;
+        }
+        .price-tag { color: var(--price); font-size: 5rem; font-weight: 900; line-height: 1; }
+        .old-price { text-decoration: line-through; color: #666; font-size: 1.5rem; }
+
+        .feature-img { border-radius: 30px; width: 100%; height: 400px; object-fit: cover; border: 1px solid #333; }
+        .accent-color { color: var(--main); }
+
+        .wsp-float {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366;
+            width: 65px; height: 65px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 35px;
+            color: white; z-index: 9999; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
         
-        <div class="video-container rounded-5 shadow-lg mx-auto" style="max-width: 800px; border: 2px solid #333;" data-aos="flip-up">
-            <video autoplay muted loop playsinline class="w-100 rounded-5">
+        .badge-huacho {
+            background: var(--main); color: white; padding: 10px 20px;
+            border-radius: 50px; font-weight: bold; display: inline-block; margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/51933589431?text=¡LO QUIERO! Soy de Huacho y quiero el SteelSeries de 79 soles." class="wsp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 shadow">
+        <div class="container py-2 text-center d-block">
+            <a class="navbar-brand fw-black fs-2" href="#">ELMAQUI <span class="accent-color">TECH</span></a>
+        </div>
+    </nav>
+
+    <section class="hero text-center">
+        <div data-aos="zoom-out" data-aos-duration="1500">
+            <span class="badge-huacho" data-aos="fade-down">DISPONIBLE EN HUACHO</span>
+            <h1 class="hero-title">ROMPE LAS<br>REGLAS.</h1>
+            <p class="fs-4 text-light opacity-75 mt-3">SteelSeries Apex 7 TKL: El arma definitiva.</p>
+        </div>
+    </section>
+
+    <div class="container px-4">
+        <div class="video-box" data-aos="flip-up">
+            <video autoplay muted loop playsinline class="w-100">
                 <source src="68dd4cb3-3662-4731-bdbf-c54a2c9c171b_watermark.mp4" type="video/mp4">
             </video>
         </div>
     </div>
-</section>
 
-<section class="py-5 bg-dark">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="card bg-black border-0 rounded-5 overflow-hidden shadow-glow">
-                    <img src="teclado con ia 2.jpg" class="card-img-top opacity-75" alt="Detalle RGB">
-                    <div class="card-body p-4 text-white text-center">
-                        <h3 class="fw-bold">ILUMINACIÓN RGB REACTIVA</h3>
-                        <p class="text-secondary small">Millones de colores que responden a cada uno de tus movimientos.</p>
-                    </div>
+    <section id="store" class="py-5 container text-center">
+        <div class="product-card" data-aos="zoom-in">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="teclado con ia 2.jpg" class="feature-img shadow-lg mb-4 mb-lg-0" alt="SteelSeries IA">
                 </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
-                <div class="card bg-black border-0 rounded-5 overflow-hidden shadow-glow">
-                    <img src="teclado con ia.jpg" class="card-img-top opacity-75" alt="Diseño TKL">
-                    <div class="card-body p-4 text-white text-center">
-                        <h3 class="fw-bold">FORMATO TKL COMPACTO</h3>
-                        <p class="text-secondary small">Más espacio para tu mouse, más precisión en tus disparos.</p>
-                    </div>
+                <div class="col-lg-6">
+                    <h2 class="display-3 fw-black mb-0">OFERTA <span class="accent-color">FLASH</span></h2>
+                    <p class="old-price mb-0">Precio Lima: S/ 450.00</p>
+                    <div class="price-tag mb-4">S/ 79.00</div>
+                    <p class="fs-5 text-secondary">¿Vas a seguir esperando el envío de Lima? Llévatelo hoy mismo. Switches mecánicos, pantalla OLED y RGB reactivo.</p>
+                    <a href="https://wa.me/51933589431?text=Quiero%20el%20teclado%20SteelSeries%20de%2079%20soles%20ya" class="btn btn-primary btn-lg w-100 py-4 rounded-pill fw-bold fs-3 shadow">COMPRAR AHORA</a>
+                    <p class="mt-3 text-warning"><i class="fa-solid fa-fire me-2"></i>¡Solo quedan 5 unidades en stock!</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="comprar" class="py-5 text-center bg-black">
-    <div class="container py-5">
-        <h2 class="display-3 fw-black text-white mb-5" data-aos="fade-down">¿VAS A SEGUIR JUGANDO <br><span class="text-primary">COMO UN NOOB?</span></h2>
-        
-        <div class="row g-4 justify-content-center mb-5">
-            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
-                <div class="p-3 border border-secondary rounded-4">
-                    <h5 class="text-white mb-0">SWITCHES ROJOS</h5>
-                    <small class="text-muted">Velocidad pura</small>
-                </div>
+    <section class="py-5 container">
+        <div class="row g-5">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <h4 class="fw-bold accent-color">SIN DELAY</h4>
+                <p class="text-secondary">Respuesta instantánea. En el gaming, un milisegundo es la diferencia entre ganar o morir.</p>
             </div>
-            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
-                <div class="p-3 border border-secondary rounded-4">
-                    <h5 class="text-white mb-0">OLED SMART</h5>
-                    <small class="text-muted">Pantalla integrada</small>
-                </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <h4 class="fw-bold accent-color">DURABILIDAD</h4>
+                <p class="text-secondary">Aleación de aluminio de grado aeronáutico. Construido para durar toda la vida.</p>
             </div>
-            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
-                <div class="p-3 border border-secondary rounded-4">
-                    <h5 class="text-white mb-0">STOCK EN HUACHO</h5>
-                    <small class="text-muted">Entrega hoy mismo</small>
-                </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <h4 class="fw-bold accent-color">LOCAL</h4>
+                <p class="text-secondary">Punto de entrega en el centro de Huacho. Sin estafas, sin esperas.</p>
             </div>
         </div>
+    </section>
 
-        <div class="p-5 bg-primary rounded-5 d-inline-block shadow-lg" data-aos="pulse">
-            <h3 class="text-white fw-bold">ÚLTIMAS 5 UNIDADES DISPONIBLES</h3>
-            <p class="mb-4">No esperes a que llegue de Lima, recógelo ya.</p>
-            <a href="https://wa.me/51933589431?text=Quiero%20el%20SteelSeries%20de%2079%20soles%20AHORA" class="btn btn-white btn-lg rounded-pill px-5 fw-black text-primary">
-                PEDIR POR WHATSAPP (S/ 79)
-            </a>
-        </div>
-    </div>
-</section>
+    <footer class="py-5 text-center border-top border-secondary mt-5">
+        <p class="text-secondary">© 2026 ELMAQUI TECH - El Rey del Hardware en Huacho.</p>
+    </footer>
 
-<style>
-    body { background-color: #000; font-family: 'Inter', sans-serif; }
-    .fw-black { font-weight: 900; }
-    .text-primary { color: #007bff !important; }
-    .bg-primary { background-color: #007bff !important; }
-    .shadow-glow { box-shadow: 0 0 30px rgba(0, 123, 255, 0.2); }
-    .btn-white { background: #fff; color: #000; border: none; }
-    .btn-white:hover { background: #eee; transform: translateY(-3px); }
-    
-    /* Animación de pulso para el botón final */
-    [data-aos="pulse"] {
-        animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
-</style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
