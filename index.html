@@ -13,7 +13,7 @@
         :root { --main: #0071e3; --dark: #000; --card: #161617; }
         body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HERO - VIDEO DE FONDO EN BUCLE */
+        /* HERO - CONFIGURACIÓN DEL VIDEO DE FONDO */
         .hero { 
             position: relative;
             height: 100vh; 
@@ -21,9 +21,10 @@
             align-items: center; 
             justify-content: center;
             overflow: hidden;
+            background-color: #000; /* Fondo negro mientras carga */
         }
         
-        .hero-video {
+        #heroVideo {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -31,9 +32,9 @@
             min-height: 100%;
             width: auto;
             height: auto;
-            z-index: 0;
+            z-index: 1;
             transform: translate(-50%, -50%);
-            object-fit: cover;
+            object-fit: cover; /* Esto hace que el video llene toda la pantalla */
         }
 
         .hero-overlay {
@@ -42,13 +43,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Oscurece un poco el video para que se lean las letras */
-            z-index: 1;
+            background: rgba(0, 0, 0, 0.4); /* Capa oscura para que el texto resalte */
+            z-index: 2;
         }
 
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
+            text-align: center;
         }
 
         .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
@@ -58,7 +60,7 @@
         .feature-img { border-radius: 40px; width: 100%; height: 500px; object-fit: cover; }
         .accent-color { color: var(--main); }
 
-        /* PRODUCTOS - EL CIERRE */
+        /* PRODUCTOS */
         .product-card {
             background: var(--card); border: 1px solid #333; border-radius: 30px;
             padding: 35px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
@@ -77,16 +79,14 @@
             width: 65px; height: 65px; border-radius: 50%; display: flex;
             align-items: center; justify-content: center; font-size: 35px;
             color: white; z-index: 9999; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            transition: 0.3s;
         }
-        .wsp-float:hover { transform: scale(1.1); color: white; }
 
         .cart-count { background: var(--main); color: white; border-radius: 50px; padding: 2px 8px; font-size: 12px; position: absolute; top: -5px; right: -5px; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/51933589431?text=Hola%20ELMAQUI%20TECH!%20Quiero%20llevar%20mi%20setup%20al%20siguiente%20nivel." class="wsp-float" target="_blank">
+    <a href="https://wa.me/51933589431?text=Hola%20ELMAQUI%20TECH!" class="wsp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -100,8 +100,8 @@
         </div>
     </nav>
 
-    <section class="hero text-center">
-        <video autoplay muted loop playsinline class="hero-video">
+    <section class="hero">
+        <video autoplay muted loop playsinline id="heroVideo">
             <source src="68dd4cb3-3662-4731-bdbf-c54a2c9c171b_watermark.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -117,7 +117,7 @@
         <div class="row align-items-center g-5">
             <div class="col-lg-6" data-aos="fade-right">
                 <h2 class="display-3 fw-bold mb-4">No vendemos piezas,<br><span class="accent-color">vendemos poder.</span></h2>
-                <p class="fs-5 text-secondary">En ELMAQUI TECH seleccionamos cada componente como si fuera para nuestra propia estación de combate. Si no es lo mejor, no está en nuestro catálogo.</p>
+                <p class="fs-5 text-secondary">En ELMAQUI TECH seleccionamos cada componente como si fuera para nuestra propia estación de combate.</p>
                 <div class="d-flex gap-4 mt-4 text-center">
                     <div><h3 class="fw-bold accent-color mb-0">4K</h3><small>NATIVO</small></div>
                     <div><h3 class="fw-bold accent-color mb-0">0ms</h3><small>DELAY</small></div>
@@ -125,7 +125,7 @@
                 </div>
             </div>
             <div class="col-lg-6" data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1200" class="feature-img shadow-lg" alt="Setup">
+                <img src="teclado con ia.jpg" class="feature-img shadow-lg" alt="Setup">
             </div>
         </div>
     </section>
@@ -163,8 +163,8 @@
         AOS.init();
 
         const prods = [
-            { id: 1, name: "NVIDIA RTX 4090", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
-            { id: 2, name: "Teclado Mecánico RGB", price: 420, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=400" },
+            { id: 1, name: "SteelSeries Apex 7 TKL", price: 79, img: "teclado con ia 2.jpg" },
+            { id: 2, name: "NVIDIA RTX 4090", price: 6800, img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
             { id: 3, name: "Mouse Gaming Pro", price: 290, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400" },
             { id: 4, name: "Monitor 240Hz OLED", price: 3100, img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400" }
         ];
