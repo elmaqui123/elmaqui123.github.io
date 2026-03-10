@@ -13,7 +13,7 @@
         :root { --main: #0071e3; --dark: #000; --card: #161617; }
         body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HERO CON TU VIDEO */
+        /* HERO */
         .hero { 
             position: relative; height: 100vh; width: 100%; display: flex; 
             align-items: center; justify-content: center; overflow: hidden; background-color: #000;
@@ -26,27 +26,38 @@
         .hero-content { position: relative; z-index: 3; text-align: center; }
         .hero-title { font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; letter-spacing: -5px; line-height: 0.85; }
 
+        /* SECCIONES */
         .section-padding { padding: 80px 0; }
-        .feature-img { border-radius: 40px; width: 100%; height: 500px; object-fit: cover; border: 1px solid #333; }
+        .feature-img { border-radius: 40px; width: 100%; height: 500px; object-fit: cover; }
         .accent-color { color: var(--main); }
 
         /* PRODUCTOS */
         .product-card {
             background: var(--card); border: 1px solid #333; border-radius: 30px;
-            padding: 30px; transition: 0.5s; cursor: pointer; height: 100%;
+            padding: 30px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); cursor: pointer; height: 100%;
         }
-        .product-card:hover { transform: scale(1.05); border-color: var(--main); }
-        .img-box { height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; border-radius: 15px; background: #111; overflow: hidden; }
-        .img-box img { max-height: 90%; max-width: 90%; object-fit: contain; }
+        .product-card:hover { transform: scale(1.05); border-color: var(--main); box-shadow: 0 20px 40px rgba(0, 113, 227, 0.2); }
+        .img-box { height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; overflow: hidden; border-radius: 15px; background: #222; }
+        .img-box img { max-height: 100%; width: 100%; object-fit: contain; transition: 0.5s; }
 
         /* MODAL DE DETALLES */
         .modal-content { background: #1c1c1e; border-radius: 30px; border: 1px solid #333; color: white; padding: 20px; }
         .modal-body img { border-radius: 20px; width: 100%; height: 300px; object-fit: contain; background: #111; margin-bottom: 20px; }
-        .spec-item { margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
-        .spec-label { color: var(--main); font-weight: bold; font-size: 0.75rem; text-transform: uppercase; }
+        .spec-item { margin-bottom: 10px; border-bottom: 1px solid #333; pb-2; }
+        .spec-label { color: var(--main); font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
 
-        .search-input { background: #161617; border: 1px solid #333; color: white; border-radius: 50px; padding: 15px 25px; width: 100%; }
-        .wsp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; color: white; z-index: 9999; }
+        /* FOOTER */
+        footer { background: #080808; padding: 60px 0 20px; border-top: 1px solid #222; }
+        .footer-link { color: #888; text-decoration: none; transition: 0.3s; }
+        .footer-link:hover { color: var(--main); }
+
+        /* WHATSAPP */
+        .wsp-float {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366;
+            width: 65px; height: 65px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 35px;
+            color: white; z-index: 9999; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
         .cart-count { background: var(--main); color: white; border-radius: 50px; padding: 2px 8px; font-size: 12px; position: absolute; top: -5px; right: -5px; }
     </style>
 </head>
@@ -54,9 +65,9 @@
 
     <a href="https://wa.me/51933589431" class="wsp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 shadow">
+    <nav class="navbar sticky-top navbar-dark bg-dark bg-opacity-75 backdrop-blur shadow">
         <div class="container py-2">
-            <a class="navbar-brand fw-bold fs-2" href="#">ELMAQUI <span class="accent-color">TECH</span></a>
+            <a class="navbar-brand fw-black fs-2" href="#">ELMAQUI <span class="accent-color">TECH</span></a>
             <button class="btn btn-link position-relative text-white p-0" data-bs-toggle="offcanvas" data-bs-target="#cart">
                 <i class="fa-solid fa-cart-shopping fs-4"></i>
                 <span id="cCount" class="cart-count">0</span>
@@ -70,6 +81,7 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content" data-aos="zoom-out">
+            <p class="text-uppercase fw-bold mb-0">Hardware Grado Profesional</p>
             <h1 class="hero-title">ROMPE LAS<br>REGLAS.</h1>
             <a href="#store" class="btn btn-primary rounded-pill px-5 py-3 mt-4 fw-bold">EXPLORAR TIENDA</a>
         </div>
@@ -93,11 +105,10 @@
     </section>
 
     <section id="store" class="section-padding bg-dark">
+        <div class="container text-center mb-5">
+            <h2 class="display-4 fw-black mb-3">ARMAMENTO ELITE</h2>
+        </div>
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold mb-3">ARMAMENTO ELITE</h2>
-                <input type="text" id="pSearch" class="search-input text-center mt-3" style="max-width: 400px;" placeholder="Buscar periféricos..." onkeyup="filterProds()">
-            </div>
             <div class="row g-4" id="pGrid"></div>
         </div>
     </section>
@@ -125,6 +136,12 @@
         </div>
     </div>
 
+    <footer>
+        <div class="container text-center text-secondary">
+            <small>&copy; 2024 ELMAQUI TECH. Todos los derechos reservados.</small>
+        </div>
+    </footer>
+
     <div class="offcanvas offcanvas-end bg-dark text-white" id="cart">
         <div class="offcanvas-header border-bottom border-secondary">
             <h5 class="fw-bold m-0">TU ARSENAL</h5>
@@ -146,38 +163,46 @@
 
         const prods = [
             { 
-                id: 1, name: "SteelSeries Apex 7 TKL", price: 79.0, img: "teclado con ia 2.jpg", 
-                specs: { "Medidas": "355 x 139 x 40 mm", "Switches": "Mechanical Brown", "Pantalla": "OLED Smart", "Polling Rate": "1000Hz" } 
+                id: 1, name: "SteelSeries Apex 7 TKL", price: 79.0, 
+                // TU IMAGEN DE TECLADO 2 MANTENIDA
+                img: "teclado con ia 2.jpg", 
+                specs: { "Switches": "Mechanical Brown", "Pantalla": "OLED Smart", "Medidas": "355x139x40mm" } 
             },
             { 
-                id: 2, name: "Pad Gamer Pro XL", price: 23.9, img: "http://googleusercontent.com/image_collection/image_retrieval/6582303276521495560_0", 
-                specs: { "Medidas": "900 x 400 x 4 mm", "Material": "Micro-tejido Speed", "Base": "Antideslizante", "Bordes": "Costura Pro" } 
+                id: 2, name: "Pad Gamer Pro XL", price: 23.9, 
+                // TU IMAGEN DE PAD DESDE GITHUB
+                img: "https://raw.githubusercontent.com/TuUsuario/TuRepo/main/92f8b5a0-96b6-455b-b9d9-216a69542a9b.jpg", 
+                specs: { "Medidas": "900 x 400 x 4 mm", "Superficie": "Micro-tejido Speed", "Bordes": "Costura Pro" } 
             },
             { 
-                id: 3, name: "Mouse Gaming Pro", price: 69.9, img: "http://googleusercontent.com/image_collection/image_retrieval/7997407450422759326_0", 
-                specs: { "Sensor": "Hero 25K DPI", "Peso": "63g Ultra Ligero", "Polling": "8000Hz compatible", "Clicks": "100M garantizados" } 
+                id: 3, name: "Mouse Gaming Pro", price: 69.9, 
+                // TU IMAGEN DE MOUSE DESDE GITHUB
+                img: "https://raw.githubusercontent.com/TuUsuario/TuRepo/main/a1bd8b45-a92e-4b40-a384-5662a9b4a1b9.jpg", 
+                specs: { "Sensor": "Hero 25K DPI", "Peso": "63g Ultra Ligero", "Polling": "8000Hz (compatible)" } 
             },
             { 
-                id: 4, name: "Monitor 240Hz OLED", price: 459.9, img: "http://googleusercontent.com/image_collection/image_retrieval/16822785771965528772_0", 
-                specs: { "Panel": "OLED Quantum Dot", "Frecuencia": "240Hz", "Respuesta": "0.03ms GtG", "Resolución": "1440p QHD" } 
+                id: 4, name: "Monitor 240Hz OLED", price: 459.9, 
+                // TU IMAGEN DE MONITOR DESDE GITHUB
+                img: "https://raw.githubusercontent.com/TuUsuario/TuRepo/main/b3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3.jpg", 
+                specs: { "Panel": "OLED Quantum Dot", "Frecuencia": "240Hz", "Resolución": "4K Ultra HD" } 
             }
         ];
 
         let myCart = [];
 
-        function render(items = prods) {
-            document.getElementById('pGrid').innerHTML = items.map(p => `
+        function render() {
+            document.getElementById('pGrid').innerHTML = prods.map(p => `
                 <div class="col-md-6 col-lg-3">
-                    <div class="product-card text-center" onclick="openDetails(${p.id})">
+                    <div class="product-card text-center" onclick="showDetail(${p.id})">
                         <div class="img-box"><img src="${p.img}"></div>
-                        <h4 class="fw-bold mb-1">${p.name}</h4>
-                        <p class="accent-color fs-4 fw-bold">S/ ${p.price.toFixed(2)}</p>
+                        <h5 class="fw-bold mb-1">${p.name}</h5>
+                        <p class="accent-color fs-5 fw-bold mb-0">S/ ${p.price.toFixed(2)}</p>
                     </div>
                 </div>
             `).join('');
         }
 
-        function openDetails(id) {
+        function showDetail(id) {
             const p = prods.find(x => x.id === id);
             document.getElementById('mTitle').innerText = p.name;
             document.getElementById('mImg').src = p.img;
@@ -188,11 +213,6 @@
             new bootstrap.Modal(document.getElementById('detailModal')).show();
         }
 
-        function filterProds() {
-            const val = document.getElementById('pSearch').value.toLowerCase();
-            render(prods.filter(p => p.name.toLowerCase().includes(val)));
-        }
-
         function add(id) { myCart.push(prods.find(x => x.id === id)); update(); }
         function update() {
             document.getElementById('cCount').innerText = myCart.length;
@@ -201,7 +221,6 @@
         }
 
         function sendWsp() {
-            if(!myCart.length) return alert("Arsenal vacío");
             let m = "¡Hola ELMAQUI TECH! Quiero estos productos:%0A";
             myCart.forEach(p => m += `• ${p.name}%0A`);
             window.open(`https://wa.me/51933589431?text=${m}%0ATOTAL: ${document.getElementById('cTotal').innerText}`);
